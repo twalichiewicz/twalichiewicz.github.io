@@ -170,6 +170,7 @@ p.headline {
   letter-spacing: -3px;
   line-height: 80%;
   margin: auto;
+  max-width: 1200px;
   text-align: center;
 }
 .big-text {
