@@ -177,7 +177,7 @@ p.headline {
   background-image: url("/src/video/next_1mb.mp4");
   background-position: 100% 20%;
   background-size: cover;
-  color: #000;
+  color: transparent;
   display: inline-block;
   font-weight: 900;
   line-height: 120%;
