@@ -105,10 +105,3 @@ deploy:
   type: git
   repo: https://github.com/twalichiewicz/twalichiewicz.github.io.git
   branch: die-blog
-  token: ""
-  message: [message]
-  name: [git user]
-  email: [git email]
-  extend_dirs: [extend directory]
-  ignore_hidden: false # default is true
-  ignore_pattern: regexp # whatever file that matches the regexp will be ignored when deploying
