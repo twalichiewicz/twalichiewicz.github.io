@@ -174,7 +174,7 @@ p.headline {
   text-align: center;
 }
 .big-text {
-  background-image: url("/src/video/next_1mb.mp4");
+  background-image: url("/graphics/next_1mb.mp4");
   background-position: 100% 20%;
   background-size: cover;
   color: transparent;
