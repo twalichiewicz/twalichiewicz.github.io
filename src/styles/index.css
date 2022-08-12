@@ -190,6 +190,12 @@ p.headline {
   -webkit-background-clip: text;
   -webkit-box-decoration-break: clone;
 }
+/* Fallback */
+@media supports and (-webkit-min-device-pixel-ratio: 0) or (@-moz-document url-prefix()) {
+  .big-text {
+    background-image: url("/graphics/next_1mb.gif");
+  }
+}
 
 .links {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
