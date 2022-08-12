@@ -190,10 +190,24 @@ p.headline {
   -webkit-background-clip: text;
   -webkit-box-decoration-break: clone;
 }
-/* Fallback */
-@media supports and (-webkit-min-device-pixel-ratio: 0) or (@-moz-document url-prefix()) {
+/* Firefox */
+@-moz-document url-prefix() {
   .big-text {
     background-image: url("/graphics/next_1mb.gif");
+  }
+}
+/* Chrome */
+/* @media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .big-text {
+    background-image: url("/graphics/next_1mb.gif");
+  }
+} */
+/* Safari */
+_::-webkit-full-page-media,
+_:future,
+:root .safari_only {
+  .big-text {
+    background-image: url("/graphics/next_1mb.mp4");
   }
 }
 
