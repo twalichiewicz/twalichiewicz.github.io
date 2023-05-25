@@ -229,6 +229,20 @@ _:future,
   text-decoration: none;
   transition: border-bottom-color 1s, color 300ms;
 }
+#portfolio-li {
+  display: flex;
+  flex-direction: column;
+}
+#portfolio-span {
+  font-size: 10px;
+  color: white;
+  font-weight: 400;
+  margin-top: -3px;
+  width: 100%;
+  background: black;
+  padding: 3px 0;
+  border-radius: 0 0 4px 4px;
+}
 /* Color-scheme agnostic styling */
 .links li a:hover {
   border-bottom-color: grey;
