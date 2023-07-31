@@ -176,7 +176,7 @@ Container structures
   color: black;
   display: flex;
   font-family: ui-sans-serif;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
   height: calc(100vh / 10);
   justify-content: center;
