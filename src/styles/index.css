@@ -153,7 +153,7 @@ Container structures
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
   margin: auto;
   overflow: hidden;
@@ -185,7 +185,7 @@ Container structures
   margin: 0;
   overflow-wrap: break-word;
   padding: 8px;
-  text-align: centerr;
+  text-align: center;
   text-overflow: ellipsis;
   transition: all ease-in-out 3000ms;
   white-space: break-spaces;
