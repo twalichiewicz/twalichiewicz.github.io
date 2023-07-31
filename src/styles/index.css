@@ -161,6 +161,72 @@ Container structures
   width: 100vw;
 }
 
+.cubeRow {
+  display: flex;
+  flex-direction: row;
+}
+.cubeRow a {
+  text-decoration: none;
+}
+
+.cube {
+  align-items: center;
+  background: white;
+  border-radius: 3px;
+  color: black;
+  display: flex;
+  font-family: ui-sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  height: calc(100vh / 10);
+  justify-content: center;
+  line-break: anywhere;
+  line-height: normal;
+  margin: 0;
+  overflow-wrap: break-word;
+  padding: 8px;
+  text-align: centerr;
+  text-overflow: ellipsis;
+  transition: all ease-in-out 3000ms;
+  white-space: break-spaces;
+  width: calc(100vw / 10);
+  z-index: 000;
+}
+.cube:hover {
+  background: rgba(0, 0, 0, 0.03);
+  transition: all ease-in-out 500ms;
+  z-index: 999;
+}
+.cube.letter {
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+}
+.cube.letter:hover {
+  background: white;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transition: all ease-in-out 300ms;
+}
+.cube.link {
+  line-height: normal;
+}
+.cube.link:hover {
+  color: white;
+}
+/* .linkContainer {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 97%,
+    rgba(255, 255, 255, 1) 99%,
+    rgba(210, 210, 210, 1) 100%
+  );
+  transition: all ease-in-out 300ms;
+}
+.linkContainer::after {
+  background: red;
+  display: block;
+  position: absolute;
+} */
+
 p.headline {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
     Apple Color Emoji;

@@ -1,0 +1,37 @@
+#navigation {
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
+    Apple Color Emoji;
+  font-size: 12px;
+  font-weight: bold;
+  position: fixed;
+  padding: 12px 12px;
+  text-decoration: none;
+  top: 6px;
+  z-index: 999;
+}
+
+#navigation .nav-button {
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.75);
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 6px 12px;
+}
+
+#navigation .nav-button a {
+  text-decoration: none;
+}
+
+.container-project {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  text-align: center;
+  width: 100vw;
+}
