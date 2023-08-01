@@ -207,9 +207,23 @@ Container structures
 }
 .cube.link {
   line-height: normal;
+  position: relative;
 }
 .cube.link:hover {
   color: white;
+}
+.cube.link > span {
+  bottom: 6px;
+  color: transparent;
+  font-size: 10px;
+  font-weight: normal;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  transition: all ease-in-out 300ms;
+}
+.cube.link:hover > span {
+  color: rgba(0, 0, 0, 0.6);
 }
 
 p.headline {
@@ -387,6 +401,9 @@ _:future,
   }
   .cube.link:hover {
     color: white;
+  }
+  .cube.link:hover > span {
+    color: rgba(255, 255, 255, 0.6);
   }
 
   .links li a {
