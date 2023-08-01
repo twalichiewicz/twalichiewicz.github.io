@@ -211,21 +211,6 @@ Container structures
 .cube.link:hover {
   color: white;
 }
-/* .linkContainer {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 97%,
-    rgba(255, 255, 255, 1) 99%,
-    rgba(210, 210, 210, 1) 100%
-  );
-  transition: all ease-in-out 300ms;
-}
-.linkContainer::after {
-  background: red;
-  display: block;
-  position: absolute;
-} */
 
 p.headline {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
@@ -379,6 +364,29 @@ _:future,
   body {
     background: #000;
     color: #fff;
+  }
+
+  .cube {
+    background: black;
+    color: white;
+    fill: white;
+  }
+  .cube:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .cube.letter {
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+  }
+  .cube.letter:hover {
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    transition: all ease-in-out 300ms;
+  }
+  .cube.link {
+    color: white;
+  }
+  .cube.link:hover {
+    color: white;
   }
 
   .links li a {
