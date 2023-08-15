@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
@@ -14,7 +13,7 @@ html {
   .cube.link:hover > span {
   }
 }
-*/ body {
+body {
   background: #fff;
   margin: 0;
 }
@@ -62,34 +61,33 @@ Container structures
   padding: 8px;
   text-align: center;
   text-overflow: ellipsis;
-  transition: all ease-in-out 3000ms;
+  transition: all ease-in-out 2000ms, font-size 0ms, font-weight 0ms,
+    font-family 0ms;
   white-space: break-spaces;
   width: calc(100vw / 10);
   z-index: 000;
 }
 .cube:hover {
-  background: rgba(0, 0, 0, 0.03);
-  transition: all ease-in-out 500ms;
+  background: white;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transition: all ease-in-out 200ms;
   z-index: 999;
 }
 .cube.letter {
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
-}
-.cube.letter:hover {
-  background: white;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  transition: all ease-in-out 300ms;
 }
 .cube.link {
   line-height: normal;
   position: relative;
 }
 .cube.link:hover {
+  background: black;
   color: white;
+  fill: white;
 }
 .cube.link > span {
   bottom: 6px;
-  color: transparent;
+  color: white;
   font-size: 10px;
   font-weight: normal;
   margin-left: auto;
@@ -98,141 +96,7 @@ Container structures
   transition: all ease-in-out 300ms;
 }
 .cube.link:hover > span {
-  color: rgba(0, 0, 0, 0.6);
-}
-
-p.headline {
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
-    Apple Color Emoji;
-  font-kerning: normal;
-  font-size: 20vmin;
-  font-weight: 700;
-  letter-spacing: -3px;
-  line-height: 80%;
-  margin: auto;
-  max-width: 1200px;
-  text-align: center;
-}
-.big-text {
-  background-image: url("/media/next_1mb.mp4");
-  background-position: 100% 20%;
-  background-size: cover;
-  color: transparent;
-  display: inline-block;
-  font-weight: 900;
-  line-height: 120%;
-  margin: auto -12px -36px -12px;
-  padding-left: 1vw;
-  padding-right: 1vw;
-  text-align: center;
-  user-select: none;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  -webkit-box-decoration-break: clone;
-}
-/* Firefox */
-@-moz-document url-prefix() {
-  .big-text {
-    background-image: url("/media/next_1mb.gif");
-  }
-}
-/* Chrome */
-/* @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .big-text {
-    background-image: url("/media/next_1mb.gif");
-  }
-} */
-/* Safari */
-_::-webkit-full-page-media,
-_:future,
-:root .safari_only {
-  .big-text {
-    background-image: url("/media/next_1mb.mp4");
-  }
-}
-
-.links {
-  font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
-    Apple Color Emoji;
-  font-weight: 600;
-  list-style: none;
-  margin-bottom: 3rem;
-  padding: 0;
-}
-.links li {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-.links li a {
-  border-bottom: 3px solid;
-  font-size: 32px;
-  text-decoration: none;
-  transition: border-bottom-color 1s, color 300ms;
-}
-#portfolio-li {
-  display: flex;
-  flex-direction: column;
-}
-#portfolio-span {
-  font-size: 10px;
   color: white;
-  font-weight: 400;
-  margin-top: -3px;
-  width: 100%;
-  background: black;
-  padding: 3px 0;
-  border-radius: 0 0 4px 4px;
-}
-/* Color-scheme agnostic styling */
-.links li a:hover {
-  border-bottom-color: grey;
-  color: grey;
-}
-
-.skully-button {
-  background: none;
-  border: none;
-}
-#skully {
-  bottom: 3%;
-  height: 48px;
-  left: 50%;
-  position: absolute;
-  width: auto;
-}
-#chatty {
-  bottom: 1%;
-  color: transparent;
-  height: 24px;
-  left: 52%;
-  opacity: 0;
-  position: absolute;
-  text-shadow: 0 0 0 #fff;
-  width: auto;
-}
-#chatty-2 {
-  bottom: 1%;
-  color: transparent;
-  height: 24px;
-  left: 49.5%;
-  opacity: 0;
-  position: absolute;
-  text-shadow: 0 0 0 #fff;
-  transform: scale(-1, 1);
-  width: auto;
-  -moz-transform: scale(1, -1);
-  -webkit-transform: scale(1, -1);
-}
-
-.skully-button:hover > #skully {
-  animation: 1s chatty-skull ease infinite;
-}
-.skully-button:hover > #chatty {
-  animation: 4s chatty-skull-bubble ease infinite;
-}
-.skully-button:hover > #chatty-2 {
-  animation: 5s chatty-skull-bubble ease infinite;
-  animation-delay: 4s;
 }
 
 /* Light mode */
@@ -254,7 +118,6 @@ _:future,
     background: #000;
     color: #fff;
   }
-
   .cube {
     background: black;
     color: white;
@@ -279,10 +142,5 @@ _:future,
   }
   .cube.link:hover > span {
     color: rgba(255, 255, 255, 0.6);
-  }
-
-  .links li a {
-    border-bottom-color: #fff;
-    color: #fff;
   }
 }
