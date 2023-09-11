@@ -1,146 +1,148 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 /* /* For when no touch controls are available */
 @media screen not and (touch: touch) {
-  .cube.link > span {
-    color: rgba(0, 0, 0, 0.6);
-  }
-  .cube.link:hover > span {
-  }
+	.cube.link > span {
+		color: rgba(0, 0, 0, 0.6);
+	}
+	.cube.link:hover > span {
+	}
 }
+
 body {
-  background: #fff;
-  margin: 0;
+	background: #fff;
+	margin: 0;
 }
 
 /*
 Container structures
  */
 .container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  justify-content: center;
-  margin: auto;
-  overflow: hidden;
-  text-align: center;
-  width: 100%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	height: 90vh;
+	justify-content: center;
+	margin: auto;
+	overflow: hidden;
+	text-align: center;
+	width: 100%;
 }
 
 .cubeRow {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 .cubeRow a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .cube {
-  align-items: center;
-  background: white;
-  border-radius: 3px;
-  color: black;
-  display: flex;
-  font-family: ui-sans-serif;
-  font-size: 2rem;
-  font-weight: bold;
-  height: calc(100vh / 10);
-  justify-content: center;
-  line-break: anywhere;
-  line-height: normal;
-  margin: 0;
-  min-height: 64px;
-  min-width: 64px;
-  overflow-wrap: break-word;
-  padding: 8px;
-  text-align: center;
-  text-overflow: ellipsis;
-  transition: all ease-in-out 2000ms, font-size 0ms, font-weight 0ms,
-    font-family 0ms;
-  white-space: break-spaces;
-  width: calc(100vw / 10);
-  z-index: 000;
+	align-items: center;
+	background: white;
+	border-radius: 3px;
+	color: black;
+	display: flex;
+	font-family: ui-sans-serif;
+	font-size: 2rem;
+	font-weight: bold;
+	height: calc(100vh / 10);
+	justify-content: center;
+	line-break: anywhere;
+	line-height: normal;
+	margin: 0;
+	min-height: 64px;
+	min-width: 64px;
+	overflow-wrap: break-word;
+	padding: 8px;
+	text-align: center;
+	text-overflow: ellipsis;
+	transition: all ease-in-out 2000ms, font-size 0ms, font-weight 0ms,
+		font-family 0ms;
+	white-space: break-spaces;
+	width: calc(100vw / 10);
+	z-index: 000;
 }
 .cube:hover {
-  background: white;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-  transition: all ease-in-out 200ms;
-  z-index: 999;
+	background: white;
+	box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+	transition: all ease-in-out 200ms;
+	z-index: 999;
 }
 .cube.letter {
-  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
 }
 .cube.link {
-  line-height: normal;
-  position: relative;
+	line-height: normal;
+	position: relative;
 }
 .cube.link:hover {
-  background: black;
-  color: white;
-  fill: white;
+	background: black;
+	color: white;
+	fill: white;
 }
 .cube.link > span {
-  bottom: 6px;
-  color: white;
-  font-size: 10px;
-  font-weight: normal;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  transition: all ease-in-out 300ms;
+	bottom: 6px;
+	color: white;
+	font-size: 10px;
+	font-weight: normal;
+	margin-left: auto;
+	margin-right: auto;
+	position: absolute;
+	transition: all ease-in-out 300ms;
 }
 .cube.link:hover > span {
-  color: white;
+	color: white;
 }
 
 /* Light mode */
 @media screen and (prefers-color-scheme: light) {
-  body {
-    background: #fff;
-    color: #000;
-  }
+	body {
+		background: #fff;
+		color: #000;
+	}
 
-  .links li a {
-    border-bottom-color: #000;
-    color: #000;
-  }
+	.links li a {
+		border-bottom-color: #000;
+		color: #000;
+	}
 }
 
 /* Dark mode */
 @media screen and (prefers-color-scheme: dark) {
-  body {
-    background: #000;
-    color: #fff;
-  }
-  .cube {
-    background: black;
-    color: white;
-    fill: white;
-  }
-  .cube:hover {
-    background: rgba(255, 255, 255, 0.03);
-  }
-  .cube.letter {
-    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
-  }
-  .cube.letter:hover {
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-    transition: all ease-in-out 300ms;
-  }
-  .cube.link {
-    color: white;
-  }
-  .cube.link:hover {
-    color: white;
-  }
-  .cube.link:hover > span {
-    color: rgba(255, 255, 255, 0.6);
-  }
+	body {
+		background: #000;
+		color: #fff;
+	}
+	.cube {
+		background: black;
+		color: white;
+		fill: white;
+	}
+	.cube:hover {
+		background: rgba(255, 255, 255, 0.03);
+	}
+	.cube.letter {
+		text-shadow: 0 2px 2px rgba(0, 0, 0, 0.12);
+	}
+	.cube.letter:hover {
+		background: rgba(255, 255, 255, 0.12);
+		box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+		transition: all ease-in-out 300ms;
+	}
+	.cube.link {
+		color: white;
+	}
+	.cube.link:hover {
+		background: rgba(255, 255, 255, 0.06);
+		color: white;
+	}
+	.cube.link:hover > span {
+		color: rgba(255, 255, 255, 0.6);
+	}
 }
