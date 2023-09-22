@@ -3,7 +3,7 @@ body {
 	overflow: hidden;
 }
 
-/* 
+/*
 Container structures
  */
 .container {
@@ -21,7 +21,8 @@ a {
 }
 
 h1 {
-	font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif, Apple Color Emoji;
+	font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif,
+		Apple Color Emoji;
 	font-size: 12vh;
 	font-weight: 600;
 	letter-spacing: -0.25rem;
@@ -41,7 +42,6 @@ h1.fourOhFour-text {
 	font-weight: 900;
 	letter-spacing: -30px;
 	text-align: center;
-	user-select: none;
 	width: 100%;
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;

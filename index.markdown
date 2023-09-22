@@ -34,7 +34,7 @@ layout: none
     </head>
     <body>
     	<div class="interactiveStuff" style="display: flex;align-items: end;position: absolute; text-align: left;width: 100%; z-index: 999;padding: 21px;left:0;right:0;margin-left:auto;margin-right:auto;top:0;bottom:0;margin-top:-3px;margin-bottom:auto;height:fit-content;border-radius: 0 0 12px 12px;max-width:fit-content;border: solid 1px rgba(0,0,0,0.2);">
-            <h1 style="margin: 0;font-size: 6vw;font-family: sans-serif;line-height:84%;font-weight:100;user-select: none;-webkit-user-select:none;margin-right:9px;">THOMAS<br/>DESIGN</h1>
+            <h1 style="margin: 0;font-size: 6vw;font-family: sans-serif;line-height:84%;font-weight:100;margin-right:9px;">THOMAS<br/>DESIGN</h1>
             <div class="spacer" style="flex: 1;"></div>
             <div class="row">
                 <a class="" href="https://thomas.design/blog/">
