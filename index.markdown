@@ -37,7 +37,7 @@ layout: none
             <h1 style="margin: 0;font-size: 6vw;font-family: sans-serif;line-height:84%;font-weight:100;margin-right:9px;">THOMAS<br/>DESIGN</h1>
             <div class="spacer" style="flex: 1;"></div>
             <div class="row">
-                <a class="" href="https://thomas.design/blog/">
+                <a class="" href="https://www.thomas.design/blog/">
                     <div class="cube link">
                         <svg
                             clip-rule="evenodd"
@@ -57,7 +57,7 @@ layout: none
                         <span>Blog</span>
                     </div>
                 </a>
-                <a class="" href="https://thomas.design/portfolio/">
+                <a class="" href="https://www.thomas.design/portfolio/">
                     <div class="cube link">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
