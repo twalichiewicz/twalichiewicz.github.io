@@ -5,15 +5,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-/* /* For when no touch controls are available */
-@media screen not and (touch: touch) {
-	.cube.link > span {
-		color: rgba(0, 0, 0, 0.6);
-	}
-	.cube.link:hover > span {
-	}
-}
-
 body {
 	background: #fff;
 	margin: 0;
@@ -54,8 +45,7 @@ Container structures
 	border: solid 1px rgba(0, 0, 0, 0.12);
 	color: black;
 	display: flex;
-	font-family: ui-sans-serif;
-	font-size: 2rem;
+	font-family: ui-sans-serif, sans-serif;
 	font-weight: bold;
 	height: fit-content;
 	justify-content: center;
@@ -63,7 +53,7 @@ Container structures
 	line-height: normal;
 	max-width: 64px;
 	min-height: 64px;
-	min-width: 64px;
+	min-width: 50px;
 	overflow-wrap: break-word;
 	padding: 0 6px 6px 6px;
 	text-align: center;
