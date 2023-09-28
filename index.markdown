@@ -119,8 +119,7 @@ layout: none
             "Product Design",
             "Visual Design",
             "Roadmap",
-            "User Experience",
-            "Best Practices",
+            "UX",
             "Analysis",
             "Prototyping",
           ];
