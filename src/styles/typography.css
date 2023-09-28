@@ -1,0 +1,69 @@
+.divider,
+hr {
+  border: none;
+  border-top: 1px solid var(--white-1);
+  margin: 32px auto;
+}
+
+.divider {
+  margin: 64px auto;
+}
+
+::marker {
+  color: var(--black-4);
+}
+
+blockquote {
+  border-left: 2px solid rgba(0, 0, 0, 0.12);
+  margin-left: 0;
+}
+blockquote p {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 12px;
+}
+blockquote p:first-child::before {
+  content: '"';
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 30px;
+  font-family: cursive;
+  font-weight: bolder;
+  position: relative;
+  top: 9px;
+  margin-right: 9px;
+  background: rgba(0, 0, 0, 0.07);
+  height: 17px;
+  display: inline-block;
+  line-height: 22px;
+  padding-top: 10px;
+  text-align: center;
+  border-radius: 100px;
+  width: 27px;
+}
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    border-left-color: rgba(255, 255, 255, 0.12);
+  }
+  blockquote p {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  blockquote p:first-child::before {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+pre,
+code {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+}
+
+pre {
+  font-size: 14px;
+}
+
+code {
+  font-size: 12px;
+  background-color: var(--white-1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
