@@ -114,7 +114,6 @@ layout: none
             "Testing",
             "Strategy",
             "Analytics",
-            "Art Direction",
             "MVP",
             "Product Design",
             "Visual Design",
