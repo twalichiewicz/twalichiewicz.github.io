@@ -47,10 +47,10 @@ layout: none
                         <a href="https://www.thomas.design/blog">
                             <h2 class="section-title">Blog</h2>
                         </a>
-                        <a target="_blank" rel="noopener" href="https://www.thomas.design/portfolio">
+                        <a href="https://www.thomas.design/portfolio">
                             <h2 class="section-title">Portfolio</h2>
                         </a>
-                        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/twalichiewicz/">
+                        <a target="_blank" href="https://www.linkedin.com/in/twalichiewicz/">
                             <h2 class="section-title">Contact ↗</h2>
                         </a>
                 </div>
