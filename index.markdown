@@ -40,12 +40,12 @@ layout: none
     	<nav>
             <div class="nav-content-container">
                 <div class="breadcrumbs">
-                        <a target="_blank" rel="noopener" href="https://www.thomas.design">
-                            <h2 class="nav-home-page">thomas.design</h2>
+                        <a rel="noopener" href="#">
+                            <h2 class="section-title active">thomas.design</h2>
                         </a>
                         <span class="nav-spacer">/</span>
-                        <a href="#">
-                            <h2 class="section-title active">Blog</h2>
+                        <a href="https://www.thomas.design/blog">
+                            <h2 class="section-title">Blog</h2>
                         </a>
                         <a target="_blank" rel="noopener" href="https://www.thomas.design/portfolio">
                             <h2 class="section-title">Portfolio</h2>
@@ -54,9 +54,6 @@ layout: none
                             <h2 class="section-title">Contact ↗</h2>
                         </a>
                 </div>
-                    <div class="nav-title">
-                        <h1 class="title"><em>Newest at the Top</em></h1>
-                    </div>
             </div>
         </nav>
         <script>
