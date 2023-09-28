@@ -108,20 +108,20 @@ layout: none
           var entities = [];
           var mouse;
           var copy = [
-            "Coding",
+            "Prototyping",
             "Branding",
             "Research",
             "Testing",
             "Strategy",
             "Analytics",
-            "Guidance",
+            "Art Direction",
             "MVP",
             "Product Design",
             "Visual Design",
             "Roadmap",
+            "Data",
             "UX",
-            "Analysis",
-            "Prototyping",
+            "Coding",
           ];
 
           var two = new Two({
