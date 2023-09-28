@@ -31,78 +31,34 @@ layout: none
 		<link rel="stylesheet" type="text/css" href="/src/styles/index.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/two.js@v0.7.0-stable.1/build/two.js"></script>
+        <link rel="stylesheet" href="/src/styles/var.css">
+        <link rel="stylesheet" href="/src/styles/main.css">
+        <link rel="stylesheet" href="/src/styles/nav.css">
+        <link rel="stylesheet" href="/src/styles/typography.css">
     </head>
     <body>
-    	<div class="interactiveStuff" style="display: flex;align-items: end;position: absolute; text-align: left;width: 100%; z-index: 999;padding: 21px;left:0;right:0;margin-left:auto;margin-right:auto;top:0;bottom:0;margin-top:-3px;margin-bottom:auto;height:fit-content;border-radius: 0 0 12px 12px;max-width:fit-content;border: solid 1px rgba(0,0,0,0.2);">
-            <h1 style="margin: 0;font-size: 6vw;font-family: sans-serif;line-height:84%;font-weight:100;margin-right:9px;">THOMAS<br/>DESIGN</h1>
-            <div class="spacer" style="flex: 1;"></div>
-            <div class="row">
-                <a class="" href="https://www.thomas.design/blog/">
-                    <div class="cube link">
-                        <svg
-                            clip-rule="evenodd"
-                            fill-rule="evenodd"
-                            height="18"
-                            stroke-linejoin="round"
-                            stroke-miterlimit="2"
-                            viewBox="0 0 24 24"
-                            width="18"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                d="m2.699 20c-.411 0-.699-.312-.699-.662 0-.249.145-.516.497-.703 1.788-.947 3.858-4.226 3.858-6.248-3.016.092-4.326-2.582-4.326-4.258 0-2.006 1.738-4.129 4.308-4.129 3.241 0 4.83 2.547 4.83 5.307 0 5.981-6.834 10.693-8.468 10.693zm10.833 0c-.41 0-.699-.312-.699-.662 0-.249.145-.516.497-.703 1.788-.947 3.858-4.226 3.858-6.248-3.015.092-4.326-2.582-4.326-4.258 0-2.006 1.739-4.129 4.308-4.129 3.241 0 4.83 2.547 4.83 5.307 0 5.981-6.833 10.693-8.468 10.693z"
-                                fill-rule="nonzero"
-                            />
-                        </svg>
-                        <span>Blog</span>
+    	<nav>
+            <div class="nav-content-container">
+                <div class="breadcrumbs">
+                        <a target="_blank" rel="noopener" href="https://www.thomas.design">
+                            <h2 class="nav-home-page">thomas.design</h2>
+                        </a>
+                        <span class="nav-spacer">/</span>
+                        <a href="#">
+                            <h2 class="section-title active">Blog</h2>
+                        </a>
+                        <a target="_blank" rel="noopener" href="https://www.thomas.design/portfolio">
+                            <h2 class="section-title">Portfolio</h2>
+                        </a>
+                        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/twalichiewicz/">
+                            <h2 class="section-title">Contact ↗</h2>
+                        </a>
+                </div>
+                    <div class="nav-title">
+                        <h1 class="title"><em>Newest at the Top</em></h1>
                     </div>
-                </a>
-                <a class="" href="https://www.thomas.design/portfolio/">
-                    <div class="cube link">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                d="M9 6h-2v-2c0-1.104.896-2 2-2h6c1.104 0 2 .896 2 2v2h-2v-1.5c0-.276-.224-.5-.5-.5h-5c-.276 0-.5.224-.5.5v1.5zm7 6v2h8v8h-24v-8h8v-2h-8v-5h24v5h-8zm-2-1h-4v4h4v-4z"
-                            />
-                        </svg>
-                        <span>Portfolio</span>
-                    </div></a
-                ><a class="" href="mailto:hey@thomas.design"
-                    ><div class="cube link">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                d="M24 0l-6 22-8.129-7.239 7.802-8.234-10.458 7.227-7.215-1.754 24-12zm-15 16.668v7.332l3.258-4.431-3.258-2.901z"
-                            />
-                        </svg>
-                        <span>Email</span>
-                    </div></a
-                ><a class="" href="https://www.linkedin.com/in/twalichiewicz"
-                    ><div class="cube link">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                            />
-                        </svg>
-                        <span>LinkedIn</span>
-                    </div>
-                </a>
             </div>
-            <div style="position:absolute;background: rgba(255,255,255,0.96);filter: blur(1px);box-shadow: 0 12px 24px rgba(0,0,0,0.12);top:0;bottom:0;left:0;right:0;z-index:-1;border-radius: 12px;"></div>
-        </div>
+        </nav>
         <script>
           var vector = new Two.Vector();
           var entities = [];
