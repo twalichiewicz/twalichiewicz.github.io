@@ -104,21 +104,39 @@ layout: none
             bounds.bottom.entity
           ]);
 
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+             var defaultStyles = {
+                 size: two.width * 0.08,
+                 weight: 600,
+                 fill: "white",
+                 leading: two.width * 0.08 * 0.8,
+                 family: "Inter, sans-serif",
+                 alignment: "center",
+                 baseline: "baseline",
+                 margin: {
+                   top: 0,
+                   left: 0,
+                   right: 0,
+                   bottom: 0
+                 }
+               };
+          } else {
           var defaultStyles = {
-            size: two.width * 0.08,
-            weight: 600,
-            fill: "black",
-            leading: two.width * 0.08 * 0.8,
-            family: "Inter, sans-serif",
-            alignment: "center",
-            baseline: "baseline",
-            margin: {
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0
-            }
-          };
+               size: two.width * 0.08,
+               weight: 600,
+               fill: "black",
+               leading: two.width * 0.08 * 0.8,
+               family: "Inter, sans-serif",
+               alignment: "center",
+               baseline: "baseline",
+               margin: {
+                 top: 0,
+                 left: 0,
+                 right: 0,
+                 bottom: 0
+               }
+             };
+          }
 
           addSlogan();
           resize();
@@ -172,7 +190,7 @@ layout: none
               size = two.width * 0.08;
             }
 
-            var leading = size * 0.8;
+            var leading = size * 0.7;
 
             for (var i = 0; i < two.scene.children.length; i++) {
               var child = two.scene.children[i];
@@ -251,7 +269,7 @@ layout: none
                 "transparent";
               rectangle.noStroke();
               // rectangle.opacity = 0.75;
-              rectangle.visible = true;
+              rectangle.visible = false;
 
               var entity = Matter.Bodies.rectangle(ox, oy, 1, 1);
               Matter.Body.scale(entity, rect.width, rect.height);

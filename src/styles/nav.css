@@ -13,6 +13,11 @@ nav {
 	transition: height 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 	width: 100%;
 }
+@media (prefers-color-scheme: dark) {
+	nav {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+}
 
 nav > .nav-content-container {
 	display: flex;
@@ -59,6 +64,11 @@ nav > .nav-content-container > .breadcrumbs > a h2 {
 	top: 6px;
 	width: fit-content;
 	z-index: 9999;
+}
+@media (prefers-color-scheme: dark) {
+	nav > .nav-content-container > .breadcrumbs > a h2 {
+		color: white;
+	}
 }
 
 nav > .nav-content-container > .breadcrumbs > a > .nav-home-page {

@@ -10,6 +10,11 @@ body {
 		Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: black;
+	}
+}
 
 a:link {
 	color: var(--link);
@@ -34,12 +39,15 @@ a:visited {
 	margin: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-	.section-title {
-		background: #101010;
-	}
-}
-
 .theme-command {
 	display: none;
+}
+
+canvas {
+	color: black;
+}
+@media (prefers-color-scheme: dark) {
+	canvas {
+		color: white;
+	}
 }
