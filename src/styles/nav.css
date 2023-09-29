@@ -1,6 +1,6 @@
 nav {
-	background-color: rgba(255, 255, 255, 0.8);
-	border-bottom: 1px solid #8882;
+	background-color: var(--nav-bg);
+	border-bottom: 1px solid var(--border-color);
 	user-select: none;
 	position: sticky;
 	top: 0;
@@ -8,8 +8,8 @@ nav {
 	right: 0;
 	margin-bottom: 24px;
 	z-index: 1000;
-	-webkit-backdrop-filter: blur(32px);
-	backdrop-filter: blur(32px);
+	-webkit-backdrop-filter: var(--blur);
+	backdrop-filter: var(--blur);
 	transition: height 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 	width: 100%;
 }
@@ -27,11 +27,17 @@ nav > .nav-content-container > .breadcrumbs {
 	flex-direction: row;
 	justify-content: center;
 	text-align: center;
+	height: 48px;
 }
 
 nav > .nav-content-container > .breadcrumbs > .nav-spacer {
 	color: rgba(0, 0, 0, 0.3);
-	margin: auto 9px;
+	margin: auto 9px auto 3px;
+}
+@media (prefers-color-scheme: dark) {
+	nav > .nav-content-container > .breadcrumbs > .nav-spacer {
+		color: rgba(255, 255, 255, 0.3);
+	}
 }
 
 nav > .nav-content-container > .breadcrumbs > a {
@@ -40,7 +46,7 @@ nav > .nav-content-container > .breadcrumbs > a {
 
 nav > .nav-content-container > .breadcrumbs > a h2 {
 	border-radius: 3px;
-	color: #000;
+	color: var(--black);
 	display: flex;
 	font-size: 12px;
 	font-weight: normal;
@@ -57,6 +63,11 @@ nav > .nav-content-container > .breadcrumbs > a h2 {
 
 nav > .nav-content-container > .breadcrumbs > a > .nav-home-page {
 	color: rgba(0, 0, 0, 0.6);
+}
+@media (prefers-color-scheme: dark) {
+	nav > .nav-content-container > .breadcrumbs > a > .nav-home-page {
+		color: rgba(255, 255, 255, 0.6);
+	}
 }
 
 nav > .nav-content-container > .breadcrumbs > a > .section-title.active {
@@ -81,21 +92,21 @@ nav a:focus,
 nav a:active,
 nav a:link,
 nav a:visited {
-	color: rgb(102, 102, 102);
+	color: var(--black-4);
 }
 
 nav .nav-title h1 {
 	font-size: 1.75rem;
 	font-weight: 100;
 	font-family: serif;
-	color: #000 !important;
+	color: var(--black) !important;
 	text-align: center;
 }
 nav a.title .subhead {
 	font-size: 0.3rem;
 	font-weight: normal;
 	margin-top: -20px;
-	color: rgb(51, 51, 51) !important;
+	color: var(--black-2) !important;
 }
 
 nav .nav-arrow {
@@ -122,7 +133,7 @@ nav .nav-item {
 
 nav .nav-item:hover,
 nav .nav-item:focus {
-	color: rgb(51, 51, 51);
+	color: var(--black-2);
 }
 
 @media screen and (max-width: 600px) {
@@ -154,81 +165,6 @@ nav .nav-item-search {
 	background-size: 16px 16px;
 }
 
-body[data-color-scheme="auto"] nav .nav-item-github,
-body[data-color-scheme="light"] nav .nav-item-github {
-	background-image: url(/theme-img/github-mark-dark.png);
-}
-
-body[data-color-scheme="auto"] nav .nav-item-patreon,
-body[data-color-scheme="light"] nav .nav-item-patreon {
-	background-image: url(/theme-img/patreon-logo-black.png);
-}
-
-body[data-color-scheme="auto"] nav .nav-item-codepen,
-body[data-color-scheme="light"] nav .nav-item-codepen {
-	background-image: url(https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-Black-Large.png);
-}
-
-body[data-color-scheme="auto"] nav .nav-item-mastodon,
-body[data-color-scheme="light"] nav .nav-item-mastodon {
-	background-image: url(/theme-img/mastodon-logo-black.svg);
-}
-
-body[data-color-scheme="auto"] nav .nav-item-discord,
-body[data-color-scheme="light"] nav .nav-item-discord {
-	background-image: url(/theme-img/discord-mark-dark.svg);
-}
-
-body[data-color-scheme="auto"] nav .nav-item-search,
-body[data-color-scheme="light"] nav .nav-item-search {
-	background-image: url(/theme-img/search-dark.svg);
-}
-
-@media (prefers-color-scheme: dark) {
-	body[data-color-scheme="auto"] nav .nav-item-github {
-		background-image: url(/theme-img/github-mark-light.png);
-	}
-	body[data-color-scheme="auto"] nav .nav-item-patreon {
-		background-image: url(/theme-img/patreon-logo-white.png);
-	}
-	body[data-color-scheme="auto"] nav .nav-item-codepen {
-		background-image: url(https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png);
-	}
-	body[data-color-scheme="auto"] nav .nav-item-mastodon {
-		background-image: url(/theme-img/mastodon-logo-white.svg);
-	}
-	body[data-color-scheme="auto"] nav .nav-item-discord {
-		background-image: url(/theme-img/discord-mark-light.svg);
-	}
-	body[data-color-scheme="auto"] nav .nav-item-search {
-		background-image: url(/theme-img/search-light.svg);
-	}
-}
-
-body[data-color-scheme="dark"] nav .nav-item-github {
-	background-image: url(/theme-img/github-mark-light.png);
-}
-
-body[data-color-scheme="dark"] nav .nav-item-patreon {
-	background-image: url(/theme-img/patreon-logo-white.png);
-}
-
-body[data-color-scheme="dark"] nav .nav-item-codepen {
-	background-image: url(https://blog.codepen.io/wp-content/uploads/2012/06/Button-Fill-White-Large.png);
-}
-
-body[data-color-scheme="dark"] nav .nav-item-mastodon {
-	background-image: url(/theme-img/mastodon-logo-white.svg);
-}
-
-body[data-color-scheme="dark"] nav .nav-item-discord {
-	background-image: url(/theme-img/discord-mark-light.svg);
-}
-
-body[data-color-scheme="dark"] nav .nav-item-search {
-	background-image: url(/theme-img/search-light.svg);
-}
-
 @media screen and (max-width: 600px) {
 	nav {
 		height: 48px;
@@ -250,7 +186,7 @@ body[data-color-scheme="dark"] nav .nav-item-search {
 	nav .nav-arrow::before,
 	nav .nav-arrow::after {
 		content: "";
-		background-color: #1d1d1f;
+		background-color: var(--nav-arrow);
 		display: block;
 		position: absolute;
 		top: 28px;
@@ -315,7 +251,7 @@ body[data-color-scheme="dark"] nav .nav-item-search {
 nav .color-scheme-toggle {
 	display: flex;
 	border-radius: 16px;
-	border: 1px solid #00376f;
+	border: 1px solid var(--blue);
 	padding-bottom: 1px;
 	margin-top: 16px;
 }
@@ -340,13 +276,13 @@ nav .color-scheme-toggle label span {
 	line-height: 14px;
 	padding: 2px 4px;
 	border-radius: 12px;
-	color: #3570d1;
+	color: var(--link);
 	width: 40px;
 	display: inline-block;
 	text-align: center;
 }
 
 nav .color-scheme-toggle label input:checked + span {
-	color: #c0dfff;
-	background-color: #00376f;
+	color: var(--white-txt-on-blue-bg);
+	background-color: var(--blue);
 }

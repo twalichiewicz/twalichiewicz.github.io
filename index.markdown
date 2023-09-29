@@ -51,7 +51,7 @@ layout: none
                             <h2 class="section-title">Portfolio</h2>
                         </a>
                         <a target="_blank" href="https://www.linkedin.com/in/twalichiewicz/">
-                            <h2 class="section-title">Contact ↗</h2>
+                            <h2 class="section-title">🙋‍♂️</h2>
                         </a>
                 </div>
             </div>
