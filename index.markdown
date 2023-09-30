@@ -40,14 +40,14 @@ layout: none
     	<nav>
             <div class="nav-content-container">
                 <div class="breadcrumbs">
-                        <a rel="noopener" href="#">
+                        <a href="">
                             <h2 class="section-title active">thomas.design</h2>
                         </a>
                         <span class="nav-spacer">/</span>
-                        <a href="https://www.thomas.design/blog">
+                        <a href="/blog">
                             <h2 class="section-title">Blog</h2>
                         </a>
-                        <a href="https://www.thomas.design/portfolio">
+                        <a href="/portfolio">
                             <h2 class="section-title">Portfolio</h2>
                         </a>
                         <a target="_blank" href="https://www.linkedin.com/in/twalichiewicz/">
