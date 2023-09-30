@@ -19,7 +19,7 @@ show_excerpt: true
 color_scheme: auto
 
 # show floating color theme toggle
-show_color_scheme_toggle: true
+show_color_scheme_toggle: false
 
 # uppercase categories
 uppercase_categories: true
@@ -29,20 +29,6 @@ capitalize_tags: false
 
 # add hashtag prefix before tags
 hashtag_prefix_before_tags: true
-
-# rainbow!
-rainbow_banner: false
-rainbow_banner_colors:
-  - "#e50000"
-  - "#ff8d00"
-  - "#ffee00"
-  - "#008121"
-  - "#004cff"
-  - "#760188"
-# choose from [auto, always]
-rainbow_banner_shown: auto
-# Pride Month by default
-rainbow_banner_month: 6
 
 # TOC - table of contents
 toc: true
@@ -54,7 +40,7 @@ scroll_reveal: true
 # navigation config
 nav:
   # the title displays in the upper left corner which won't change
-  title: Newest at the Top
+  title: thomas.design
   # the items displays in the upper right corner
   items:
     # these items will display as a link
