@@ -24,16 +24,11 @@
 		<link rel="stylesheet" type="text/css" href="/src/styles/index.css" />
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/two.js@v0.7.0-stable.1/build/two.js"></script>
-		<link rel="stylesheet" href="/src/styles/var.css" />
-		<link rel="stylesheet" href="/src/styles/main.css" />
-		<link rel="stylesheet" href="/src/styles/nav.css" />
-		<link rel="stylesheet" href="/src/styles/typography.css" />
 	</head>
 	<body>
 		<script>
 			var vector = new Two.Vector();
 			var entities = [];
-			// var mouse;
 			var copy = [
 				"Prototyping",
 				"Branding",
@@ -117,23 +112,7 @@
 
 			addSlogan();
 			resize();
-			// mouse = addMouseInteraction();
 			two.bind("resize", resize).bind("update", update);
-
-			// 			function addMouseInteraction() {
-			// 				// add mouse control
-			// 				var mouse = Matter.Mouse.create(document.body);
-			// 				var mouseConstraint = Matter.MouseConstraint.create(solver, {
-			// 					mouse: mouse,
-			// 					constraint: {
-			// 						stiffness: 0.2,
-			// 					},
-			// 				});
-			//
-			// 				Matter.World.add(solver.world, mouseConstraint);
-			//
-			// 				return mouseConstraint;
-			// 			}
 
 			function resize() {
 				var length = bounds.length;
@@ -270,8 +249,6 @@
 
 			function update(frameCount, timeDelta) {
 				var allBodies = Matter.Composite.allBodies(solver.world);
-				// Matter.MouseConstraint.update(mouse, allBodies);
-				// Matter.MouseConstraint._triggerEvents(mouse);
 
 				Matter.Engine.update(solver);
 
