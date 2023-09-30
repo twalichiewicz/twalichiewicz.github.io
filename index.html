@@ -107,285 +107,256 @@
 	</div>
 </nav>
 
-        <html lang="en">
-	<head>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/media/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/media/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/media/favicon-16x16.png"
-		/>
-		<link rel="manifest" href="/media/site.webmanifest" />
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Thomas Walichiewicz - Digital Product Designer</title>
-		<link rel="stylesheet" type="text/css" href="/src/styles/index.css" />
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/two.js@v0.7.0-stable.1/build/two.js"></script>
-	</head>
-	<body>
-		<script>
-			var vector = new Two.Vector();
-			var entities = [];
-			var copy = [
-				"Prototyping",
-				"Branding",
-				"Research",
-				"Testing",
-				"Strategy",
-				"Analytics",
-				"MVP",
-				"Product",
-				"Visual",
-				"Roadmap",
-				"Data",
-				"UX",
-				"Coding",
-			];
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/two.js@v0.7.0-stable.1/build/two.js"></script>
+<script>
+	var vector = new Two.Vector();
+	var entities = [];
+	var copy = [
+		"Prototyping",
+		"Branding",
+		"Research",
+		"Testing",
+		"Strategy",
+		"Analytics",
+		"MVP",
+		"Product",
+		"Visual",
+		"Roadmap",
+		"Data",
+		"UX",
+		"Coding",
+	];
 
-			var two = new Two({
-				type: Two.Types.canvas,
-				fullscreen: true,
-				autostart: true,
-			}).appendTo(document.body);
+	var two = new Two({
+		type: Two.Types.canvas,
+		fullscreen: true,
+		autostart: true,
+	}).appendTo(document.body);
 
-			var solver = Matter.Engine.create();
-			solver.world.gravity.y = 1;
+	var solver = Matter.Engine.create();
+	solver.world.gravity.y = 1;
 
-			var bounds = {
-				length: 5000,
-				thickness: 50,
-				properties: {
-					isStatic: true,
-				},
-			};
+	var bounds = {
+		length: 5000,
+		thickness: 50,
+		properties: {
+			isStatic: true,
+		},
+	};
 
-			// bounds.top = createBoundary(bounds.length, bounds.thickness);
-			bounds.left = createBoundary(bounds.thickness, bounds.length);
-			bounds.right = createBoundary(bounds.thickness, bounds.length);
-			bounds.bottom = createBoundary(bounds.length, bounds.thickness);
+	// bounds.top = createBoundary(bounds.length, bounds.thickness);
+	bounds.left = createBoundary(bounds.thickness, bounds.length);
+	bounds.right = createBoundary(bounds.thickness, bounds.length);
+	bounds.bottom = createBoundary(bounds.length, bounds.thickness);
 
-			Matter.World.add(solver.world, [
-				/*bounds.top.entity,*/ bounds.left.entity,
-				bounds.right.entity,
-				bounds.bottom.entity,
-			]);
+	Matter.World.add(solver.world, [
+		/*bounds.top.entity,*/ bounds.left.entity,
+		bounds.right.entity,
+		bounds.bottom.entity,
+	]);
 
-			if (
-				window.matchMedia &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches
-			) {
-				var defaultStyles = {
-					size: two.width * 0.08,
-					weight: 600,
-					fill: "white",
-					leading: two.width * 0.08 * 0.8,
-					family: "Inter, sans-serif",
-					alignment: "center",
-					baseline: "baseline",
-					margin: {
-						top: 0,
-						left: 0,
-						right: 0,
-						bottom: 0,
-					},
-				};
+	if (
+		window.matchMedia &&
+		window.matchMedia("(prefers-color-scheme: dark)").matches
+	) {
+		var defaultStyles = {
+			size: two.width * 0.08,
+			weight: 600,
+			fill: "white",
+			leading: two.width * 0.08 * 0.8,
+			family: "Inter, sans-serif",
+			alignment: "center",
+			baseline: "baseline",
+			margin: {
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+			},
+		};
+	} else {
+		var defaultStyles = {
+			size: two.width * 0.08,
+			weight: 600,
+			fill: "black",
+			leading: two.width * 0.08 * 0.8,
+			family: "Inter, sans-serif",
+			alignment: "center",
+			baseline: "baseline",
+			margin: {
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+			},
+		};
+	}
+
+	addSlogan();
+	resize();
+	two.bind("resize", resize).bind("update", update);
+
+	function resize() {
+		var length = bounds.length;
+		var thickness = bounds.thickness;
+
+		// vector.x = two.width / 2;
+		// vector.y = - thickness / 2;
+		// Matter.Body.setPosition(bounds.top.entity, vector);
+
+		vector.x = -thickness / 2;
+		vector.y = two.height / 2;
+		Matter.Body.setPosition(bounds.left.entity, vector);
+
+		vector.x = two.width + thickness / 2;
+		vector.y = two.height / 2;
+		Matter.Body.setPosition(bounds.right.entity, vector);
+
+		vector.x = two.width / 2;
+		vector.y = two.height + thickness / 2;
+		Matter.Body.setPosition(bounds.bottom.entity, vector);
+
+		var size;
+
+		if (two.width < 480) {
+			size = two.width * 0.12;
+		} else if (two.width > 1080 && two.width < 1600) {
+			size = two.width * 0.07;
+		} else if (two.width > 1600) {
+			size = two.width * 0.06;
+		} else {
+			size = two.width * 0.08;
+		}
+
+		var leading = size * 0.7;
+
+		for (var i = 0; i < two.scene.children.length; i++) {
+			var child = two.scene.children[i];
+
+			if (!child.isWord) {
+				continue;
+			}
+
+			var text = child.text;
+			var rectangle = child.rectangle;
+			var entity = child.entity;
+
+			text.size = size;
+			text.leading = leading;
+
+			var rect = text.getBoundingClientRect(true);
+			rectangle.width = rect.width;
+			rectangle.height = rect.height;
+
+			Matter.Body.scale(entity, 1 / entity.scale.x, 1 / entity.scale.y);
+			Matter.Body.scale(entity, rect.width, rect.height);
+			entity.scale.set(rect.width, rect.height);
+
+			text.size = size / 1;
+		}
+	}
+
+	function addSlogan() {
+		var x = defaultStyles.margin.left;
+		var y = -two.height; // Header offset
+
+		for (var i = 0; i < copy.length; i++) {
+			var word = copy[i];
+			var group = new Two.Group();
+			var text = new Two.Text("", 0, 0, defaultStyles);
+
+			group.isWord = true;
+
+			// Override default styles
+			if (word.value) {
+				text.value = word.value;
+
+				for (var prop in word.styles) {
+					text[prop] = word.styles[prop];
+				}
 			} else {
-				var defaultStyles = {
-					size: two.width * 0.08,
-					weight: 600,
-					fill: "black",
-					leading: two.width * 0.08 * 0.8,
-					family: "Inter, sans-serif",
-					alignment: "center",
-					baseline: "baseline",
-					margin: {
-						top: 0,
-						left: 0,
-						right: 0,
-						bottom: 0,
-					},
-				};
+				text.value = word;
 			}
 
-			addSlogan();
-			resize();
-			two.bind("resize", resize).bind("update", update);
+			var rect = text.getBoundingClientRect();
+			var ox = x + rect.width / 2;
+			var oy = y + rect.height / 2;
 
-			function resize() {
-				var length = bounds.length;
-				var thickness = bounds.thickness;
+			var ca = x + rect.width;
+			var cb = two.width;
 
-				// vector.x = two.width / 2;
-				// vector.y = - thickness / 2;
-				// Matter.Body.setPosition(bounds.top.entity, vector);
+			// New line
+			if (ca >= cb) {
+				x = defaultStyles.margin.left;
+				y +=
+					defaultStyles.leading +
+					defaultStyles.margin.top +
+					defaultStyles.margin.bottom;
 
-				vector.x = -thickness / 2;
-				vector.y = two.height / 2;
-				Matter.Body.setPosition(bounds.left.entity, vector);
-
-				vector.x = two.width + thickness / 2;
-				vector.y = two.height / 2;
-				Matter.Body.setPosition(bounds.right.entity, vector);
-
-				vector.x = two.width / 2;
-				vector.y = two.height + thickness / 2;
-				Matter.Body.setPosition(bounds.bottom.entity, vector);
-
-				var size;
-
-				if (two.width < 480) {
-					size = two.width * 0.12;
-				} else if (two.width > 1080 && two.width < 1600) {
-					size = two.width * 0.07;
-				} else if (two.width > 1600) {
-					size = two.width * 0.06;
-				} else {
-					size = two.width * 0.08;
-				}
-
-				var leading = size * 0.7;
-
-				for (var i = 0; i < two.scene.children.length; i++) {
-					var child = two.scene.children[i];
-
-					if (!child.isWord) {
-						continue;
-					}
-
-					var text = child.text;
-					var rectangle = child.rectangle;
-					var entity = child.entity;
-
-					text.size = size;
-					text.leading = leading;
-
-					var rect = text.getBoundingClientRect(true);
-					rectangle.width = rect.width;
-					rectangle.height = rect.height;
-
-					Matter.Body.scale(entity, 1 / entity.scale.x, 1 / entity.scale.y);
-					Matter.Body.scale(entity, rect.width, rect.height);
-					entity.scale.set(rect.width, rect.height);
-
-					text.size = size / 1;
-				}
+				ox = x + rect.width / 2;
+				oy = y + rect.height / 2;
 			}
 
-			function addSlogan() {
-				var x = defaultStyles.margin.left;
-				var y = -two.height; // Header offset
+			group.translation.x = ox;
+			group.translation.y = oy;
+			text.translation.y = 14;
 
-				for (var i = 0; i < copy.length; i++) {
-					var word = copy[i];
-					var group = new Two.Group();
-					var text = new Two.Text("", 0, 0, defaultStyles);
+			var rectangle = new Two.Rectangle(0, 0, rect.width, rect.height);
+			// rectangle.fill = 'rgb(255, 50, 50)';
+			rectangle.fill = "transparent";
+			rectangle.noStroke();
+			// rectangle.opacity = 0.75;
+			rectangle.visible = false;
 
-					group.isWord = true;
+			var entity = Matter.Bodies.rectangle(ox, oy, 1, 1);
+			Matter.Body.scale(entity, rect.width, rect.height);
 
-					// Override default styles
-					if (word.value) {
-						text.value = word.value;
+			entity.scale = new Two.Vector(rect.width, rect.height);
+			entity.object = group;
+			entities.push(entity);
 
-						for (var prop in word.styles) {
-							text[prop] = word.styles[prop];
-						}
-					} else {
-						text.value = word;
-					}
+			x += rect.width + defaultStyles.margin.left + defaultStyles.margin.right;
 
-					var rect = text.getBoundingClientRect();
-					var ox = x + rect.width / 2;
-					var oy = y + rect.height / 2;
+			group.text = text;
+			group.rectangle = rectangle;
+			group.entity = entity;
 
-					var ca = x + rect.width;
-					var cb = two.width;
+			group.add(rectangle, text);
+			two.add(group);
+		}
 
-					// New line
-					if (ca >= cb) {
-						x = defaultStyles.margin.left;
-						y +=
-							defaultStyles.leading +
-							defaultStyles.margin.top +
-							defaultStyles.margin.bottom;
+		Matter.World.add(solver.world, entities);
+	}
 
-						ox = x + rect.width / 2;
-						oy = y + rect.height / 2;
-					}
+	function update(frameCount, timeDelta) {
+		var allBodies = Matter.Composite.allBodies(solver.world);
 
-					group.translation.x = ox;
-					group.translation.y = oy;
-					text.translation.y = 14;
+		Matter.Engine.update(solver);
 
-					var rectangle = new Two.Rectangle(0, 0, rect.width, rect.height);
-					// rectangle.fill = 'rgb(255, 50, 50)';
-					rectangle.fill = "transparent";
-					rectangle.noStroke();
-					// rectangle.opacity = 0.75;
-					rectangle.visible = false;
+		for (var i = 0; i < entities.length; i++) {
+			var entity = entities[i];
+			entity.object.position.copy(entity.position);
+			entity.object.rotation = entity.angle;
+		}
+	}
 
-					var entity = Matter.Bodies.rectangle(ox, oy, 1, 1);
-					Matter.Body.scale(entity, rect.width, rect.height);
+	function createBoundary(width, height) {
+		var rectangle = two.makeRectangle(0, 0, width, height);
+		rectangle.visible = false;
 
-					entity.scale = new Two.Vector(rect.width, rect.height);
-					entity.object = group;
-					entities.push(entity);
+		rectangle.entity = Matter.Bodies.rectangle(
+			0,
+			0,
+			width,
+			height,
+			bounds.properties
+		);
+		rectangle.entity.position = rectangle.position;
 
-					x +=
-						rect.width + defaultStyles.margin.left + defaultStyles.margin.right;
-
-					group.text = text;
-					group.rectangle = rectangle;
-					group.entity = entity;
-
-					group.add(rectangle, text);
-					two.add(group);
-				}
-
-				Matter.World.add(solver.world, entities);
-			}
-
-			function update(frameCount, timeDelta) {
-				var allBodies = Matter.Composite.allBodies(solver.world);
-
-				Matter.Engine.update(solver);
-
-				for (var i = 0; i < entities.length; i++) {
-					var entity = entities[i];
-					entity.object.position.copy(entity.position);
-					entity.object.rotation = entity.angle;
-				}
-			}
-
-			function createBoundary(width, height) {
-				var rectangle = two.makeRectangle(0, 0, width, height);
-				rectangle.visible = false;
-
-				rectangle.entity = Matter.Bodies.rectangle(
-					0,
-					0,
-					width,
-					height,
-					bounds.properties
-				);
-				rectangle.entity.position = rectangle.position;
-
-				return rectangle;
-			}
-		</script>
-	</body>
-</html>
+		return rectangle;
+	}
+</script>
 
         <footer>
 	<div class="inner">
