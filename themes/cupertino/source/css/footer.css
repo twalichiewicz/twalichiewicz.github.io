@@ -1,0 +1,21 @@
+footer {
+	bottom: 0;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.inner {
+	max-width: 980px;
+	margin: auto;
+	padding: 32px 16px;
+}
+
+footer span {
+	color: var(--footer-link-grey);
+	display: block;
+	font-size: 0.4rem;
+	margin-bottom: 2px;
+}
