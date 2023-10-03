@@ -1,10 +1,10 @@
 # REMEMBER TO EDIT THIS BEFORE DEPLOYING!!!
 
 # the path to your blog's icon:
-favicon: https://thomas.design/media/favicon.ico
+favicon: /media/favicon.ico
 
 # the path to manifest.json
-manifest: https://thomas.design/media/site.webmanifest
+manifest: /media/site.webmanifest
 
 # [Open Graph Protocol](https://ogp.me/)
 og_enabled: true
