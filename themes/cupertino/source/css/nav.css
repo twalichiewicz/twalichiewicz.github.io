@@ -2,11 +2,10 @@ nav {
 	background-color: var(--nav-bg);
 	border-bottom: 1px solid var(--border-color);
 	user-select: none;
-	position: sticky;
+	position: relative;
 	top: 0;
 	left: 0;
 	right: 0;
-	margin-bottom: 24px;
 	z-index: 1000;
 	-webkit-backdrop-filter: var(--blur);
 	backdrop-filter: var(--blur);

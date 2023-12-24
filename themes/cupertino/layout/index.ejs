@@ -1,254 +1,291 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/two.js@v0.7.0-stable.1/build/two.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+	* {
+	  box-sizing: border-box;
+	}
+
+	body {
+	  background: radial-gradient(#000000, #1d1d1d);
+	  height: 100vh;
+	  display: flex;
+	  align-items: center;
+	}
+
+	.wrapper {
+	  display: grid;
+	  grid-gap: 10px;
+	  grid-template-columns: 1fr 1fr 1fr;
+	  grid-template-rows: 1fr 1fr 1fr;
+	  grid-auto-columns: 100px;
+	  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	  background-color: transparent;
+	  color: #444;
+	  margin: 42px;
+	  max-width: 900px;
+	  margin-left: 2rem;
+	  margin-right: 2rem;
+	}
+	@media (max-width: 700px) {
+	  .wrapper {
+		display: flex;
+		grid-template-columns: 1fr;
+		flex-direction: column;
+	}
+}
+
+	.box {
+	  background-color: #444;
+	  color: #fff;
+	  cursor: default;
+	  display: flex;
+	  border-radius: 5px;
+	  padding: 20px;
+	  font-size: 150%;
+	  background-color: #3498db;
+	  border-radius: 10px;
+	  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	  overflow: hidden;
+	  position: relative; /* Add position relative for z-index stacking */
+	  transition: transform 150ms;
+	  user-select: none;
+	  -webkit-user-select: none;
+	}
+	.box:hover {
+		transition: transform 0;
+	}
+	@media (max-width: 700px) {
+		  .box {
+			grid-column: 1 !important;
+		}
+	}
+
+	.a {
+	  background: black;
+	  grid-column: 1 / 4;
+	  grid-row: 1;
+	  height: 200px;
+	}
+	.a .usersServed {
+		display: flex;
+		flex-direction: column;
+		max-width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	.departure-board {
+		display: flex;
+		position: relative;
+	}
+	.departure-board .boardCut {
+		background: black;
+		height: 2px;
+		position: absolute;
+		top: 48%;
+		width: 100%;
+		z-index: 2;
+	}
+	/* eight million animation */
+	.a .usersServed .eightMil {
+		font-size: 6rem;
+		text-align: center;
+		font-weight: bold;
+	}
+	@media (max-width: 700px) {
+		  .a .usersServed .eightMil {
+			font-size: 3.5rem;
+		}
+	}
+	.a .usersServed .eightMil-header {
+		color: yellow;
+		display: flex;
+		text-align: left;
+		font-size: 1.25rem;
+		font-weight: bold;
+		margin-bottom: 6px;
+	}
+	.a .usersServed .eightMil-header svg {
+		margin-right: 6px;
+	}
+
+	.a .letter {
+		background: rgba(255,255,255, 0.30);
+		border-radius: 3px;
+		line-height: 97px;
+		margin: 1px;
+		padding-bottom: 6px;
+	}
+	@media (max-width: 700px) {
+		  .departure-board .boardCut {
+			  top: 48%;
+		  }
+		  .a .letter {
+			line-height: 60px;
+			padding-bottom: 2px;
+		}
+	}
+
+	.b {
+	  grid-column: 1 / 2;
+	  grid-row: 2;
+	}
+	.b .unicornsGenerated {
+		display: flex;
+		flex-direction: column;
+		max-width: fit-content;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	.b .unicornsGenerated .bigThree {
+		font-size: 6rem;
+		text-align: center;
+		font-weight: bold;
+	}
+	.b .unicornsGenerated .bigThree-footer {
+		text-align: right;
+		font-size: 1rem;
+	}
+
+	.c {
+	  grid-column: 2 / 3;
+	  grid-row: 2;
+	}
+
+	.d {
+	  grid-column: 3;
+	  grid-row: 2 / 4;
+	}
+
+	.e {
+	  grid-column: 1 / 3;
+	  grid-row: 3;
+	}
+
+	.figureLabel {
+		font-size: 0.5rem;
+		position: absolute;
+		text-transform: uppercase;
+		top: 12px;
+		left: 12px;
+	}
+
+	/* Additional styles for the pulsing ring effect */
+	.pulse-ring {
+	  position: absolute;
+	  border: 2px solid rgba(255, 255, 255, 0.7);
+	  border-radius: 50%;
+	  transform: scale(0);
+	  animation: pulse 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+	}
+
+	@keyframes pulse {
+	  to {
+		transform: scale(5);
+		opacity: 0;
+	  }
+	}
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="box a" id="boxA"><span class="figureLabel">FIG. A</span>
+	<div class="usersServed">
+	<span class="eightMil-header">
+		<svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<g>
+		<path d="M1.69531 20.4738H4.0625C5.17578 20.4738 5.73828 19.923 5.73828 18.8215V16.3957C5.73828 15.3058 5.17578 14.7551 4.0625 14.7551H1.69531C0.582031 14.7551 0.0195312 15.2941 0.0195312 16.3957V18.8215C0.0195312 19.923 0.582031 20.4738 1.69531 20.4738Z" fill="yellow" fill-opacity="0.85"/>
+		<path d="M4.8125 12.0129H13.3203C14.4453 12.0129 15.0078 11.4739 15.0078 10.3723V4.677C15.0078 3.58716 14.4453 3.03638 13.3203 3.03638H4.8125C3.69922 3.03638 3.13672 3.58716 3.13672 4.677V10.3723C3.13672 11.4739 3.69922 12.0129 4.8125 12.0129Z" fill="yellow" fill-opacity="0.85"/>
+		<path d="M23.7968 18.2473H27.2539C28.3789 18.2473 28.9414 17.6966 28.9414 16.6067V9.77465C28.9414 8.68481 28.3789 8.13403 27.2539 8.13403H23.7968C22.6836 8.13403 22.1211 8.68481 22.1211 9.77465V16.6067C22.1211 17.6966 22.6836 18.2473 23.7968 18.2473Z" fill="yellow" fill-opacity="0.85"/>
+		<path d="M15.3828 17.9075C18.3476 17.9075 20.8437 15.3176 20.8437 12.0364C20.8437 8.75513 18.3007 6.29419 15.3828 6.29419C12.4531 6.29419 9.92188 8.802 9.92188 12.0598C9.92188 15.3176 12.4179 17.9075 15.3828 17.9075Z" fill="white"/>
+		<path d="M15.3828 16.302C17.4453 16.302 19.2383 14.4505 19.2383 12.0364C19.2383 9.65747 17.4453 7.88794 15.3828 7.88794C13.3203 7.88794 11.5156 9.69263 11.5156 12.0598C11.5156 14.4505 13.3203 16.302 15.3828 16.302ZM8.90234 25.2434H21.8515C22.8828 25.2434 23.5039 24.763 23.5039 23.9661C23.5039 21.47 20.3867 18.0247 15.3828 18.0247C10.3672 18.0247 7.25 21.47 7.25 23.9661C7.25 24.763 7.87109 25.2434 8.90234 25.2434Z" fill="yellow" fill-opacity="0.85"/>
+		</g>
+		</svg> Users served
+	</span>
+	  <div class="eightMil departure-board">
+		  <div class="boardCut"></div>
+		  <span class="letter letter-8 flipped">8</span>
+		  <span class="letter letter-2 flipped">2</span>
+		  <span class="letter letter-0 flipped">0</span>
+		  <span class="letter letter-0 flipped">0</span>
+		  <span class="letter letter-0 flipped">0</span>
+		  <span class="letter letter-0 flipped">0</span>
+		  <span class="letter letter-0 flipped">0</span>
+	  </div>
+	</div>
+  </div>
+  <div class="box b" id="boxB"><span class="figureLabel">FIG. B</span>
+	<div class="unicornsGenerated">
+	  <span class="bigThree">3</span>
+	  <span class="bigThree-footer">start-ups brought to unicorn status 🦄</span>
+	</div>
+  </div>
+  <div class="box c" id="boxC"><span class="figureLabel">FIG. C</span></div>
+  <div class="box d" id="boxD"><span class="figureLabel">FIG. D</span></div>
+  <div class="box e" id="boxE"><span class="figureLabel">FIG. E</span></div>
+</div>
+
 <script>
-	var vector = new Two.Vector();
-	var entities = [];
-	var copy = [
-		"Messaging",
-		"AI",
-		"Prototyping",
-		"Branding",
-		"Research",
-		"Testing",
-		"HCI",
-		"Content",
-		"Strategy",
-		"UX",
-		"Analytics",
-		"MVP",
-		"Product",
-		"Visuals",
-		"Roadmap",
-		"Data",
-		"Coding",
-	];
+  function addParallaxEffect(boxId) {
+	const box = document.getElementById(boxId);
 
-	var two = new Two({
-		type: Two.Types.canvas,
-		fullscreen: true,
-		autostart: true,
-	}).appendTo(document.body);
+	box.addEventListener('mouseenter', function () {
+	  document.addEventListener('mousemove', handleMouseMove);
+	});
 
-	var solver = Matter.Engine.create();
-	solver.world.gravity.y = 1;
+	box.addEventListener('mouseleave', function () {
+	  document.removeEventListener('mousemove', handleMouseMove);
+	  resetParallax(box);
+	});
 
-	var bounds = {
-		length: 5000,
-		thickness: 50,
-		properties: {
-			isStatic: true,
-		},
-	};
+	function handleMouseMove(e) {
+	  const x = e.clientX / window.innerWidth - 0.5;
+	  const y = 0.5 - e.clientY / window.innerHeight;
 
-	// bounds.top = createBoundary(bounds.length, bounds.thickness);
-	bounds.left = createBoundary(bounds.thickness, bounds.length);
-	bounds.right = createBoundary(bounds.thickness, bounds.length);
-	bounds.bottom = createBoundary(bounds.length, bounds.thickness);
+	  const tiltX = (x * 30).toFixed(2);
+	  const tiltY = (y * 30).toFixed(2);
 
-	Matter.World.add(solver.world, [
-		/*bounds.top.entity,*/ bounds.left.entity,
-		bounds.right.entity,
-		bounds.bottom.entity,
-	]);
-
-	if (
-		window.matchMedia &&
-		window.matchMedia("(prefers-color-scheme: dark)").matches
-	) {
-		var defaultStyles = {
-			size: two.width * 0.08,
-			weight: 600,
-			fill: "white",
-			leading: two.width * 0.08 * 0.8,
-			family: "Inter, sans-serif",
-			alignment: "center",
-			baseline: "baseline",
-			margin: {
-				top: 0,
-				left: 0,
-				right: 0,
-				bottom: 0,
-			},
-		};
-	} else {
-		var defaultStyles = {
-			size: two.width * 0.08,
-			weight: 600,
-			fill: "black",
-			leading: two.width * 0.08 * 0.8,
-			family: "Inter, sans-serif",
-			alignment: "center",
-			baseline: "baseline",
-			margin: {
-				top: 0,
-				left: 0,
-				right: 0,
-				bottom: 0,
-			},
-		};
+	  box.style.transform = `rotateX(${tiltY}deg) rotateY(${tiltX}deg)`;
 	}
 
-	addSlogan();
-	resize();
-	two.bind("resize", resize).bind("update", update);
-
-	function resize() {
-		var length = bounds.length;
-		var thickness = bounds.thickness;
-
-		// vector.x = two.width / 2;
-		// vector.y = - thickness / 2;
-		// Matter.Body.setPosition(bounds.top.entity, vector);
-
-		vector.x = -thickness / 2;
-		vector.y = two.height / 2;
-		Matter.Body.setPosition(bounds.left.entity, vector);
-
-		vector.x = two.width + thickness / 2;
-		vector.y = two.height / 2;
-		Matter.Body.setPosition(bounds.right.entity, vector);
-
-		vector.x = two.width / 2;
-		vector.y = two.height + thickness / 2;
-		Matter.Body.setPosition(bounds.bottom.entity, vector);
-
-		var size;
-
-		if (two.width < 480) {
-			size = two.width * 0.12;
-		} else if (two.width > 1080 && two.width < 1600) {
-			size = two.width * 0.07;
-		} else if (two.width > 1600) {
-			size = two.width * 0.06;
-		} else {
-			size = two.width * 0.08;
-		}
-
-		var leading = size * 0.7;
-
-		for (var i = 0; i < two.scene.children.length; i++) {
-			var child = two.scene.children[i];
-
-			if (!child.isWord) {
-				continue;
-			}
-
-			var text = child.text;
-			var rectangle = child.rectangle;
-			var entity = child.entity;
-
-			text.size = size;
-			text.leading = leading;
-
-			var rect = text.getBoundingClientRect(true);
-			rectangle.width = rect.width;
-			rectangle.height = rect.height;
-
-			Matter.Body.scale(entity, 1 / entity.scale.x, 1 / entity.scale.y);
-			Matter.Body.scale(entity, rect.width, rect.height);
-			entity.scale.set(rect.width, rect.height);
-
-			text.size = size / 1;
-		}
+	function resetParallax(element) {
+	  element.style.transform = 'rotateX(0deg) rotateY(0deg)';
 	}
 
-	function addSlogan() {
-		var x = defaultStyles.margin.left;
-		var y = -two.height; // Header offset
+	// Add click event listener for the pulse effect
+	box.addEventListener('click', function (e) {
+	  createPulseRing(e.clientX, e.clientY);
+	});
+  }
 
-		for (var i = 0; i < copy.length; i++) {
-			var word = copy[i];
-			var group = new Two.Group();
-			var text = new Two.Text("", 0, 0, defaultStyles);
+  function createPulseRing(x, y) {
+	const pulseRing = document.createElement('div');
+	pulseRing.classList.add('pulse-ring');
+	pulseRing.style.left = `${x}px`;
+	pulseRing.style.top = `${y}px`;
+	document.body.appendChild(pulseRing);
 
-			group.isWord = true;
+	// Get the duration of the animation and remove the pulse ring after that duration
+	const animationDuration = parseFloat(getComputedStyle(pulseRing).animationDuration) * 1000;
 
-			// Override default styles
-			if (word.value) {
-				text.value = word.value;
+	setTimeout(() => {
+	  pulseRing.remove();
+	}, animationDuration);
+  }
 
-				for (var prop in word.styles) {
-					text[prop] = word.styles[prop];
-				}
-			} else {
-				text.value = word;
-			}
-
-			var rect = text.getBoundingClientRect();
-			var ox = x + rect.width / 2;
-			var oy = y + rect.height / 2;
-
-			var ca = x + rect.width;
-			var cb = two.width;
-
-			// New line
-			if (ca >= cb) {
-				x = defaultStyles.margin.left;
-				y +=
-					defaultStyles.leading +
-					defaultStyles.margin.top +
-					defaultStyles.margin.bottom;
-
-				ox = x + rect.width / 2;
-				oy = y + rect.height / 2;
-			}
-
-			group.translation.x = ox;
-			group.translation.y = oy;
-			text.translation.y = 14;
-
-			var rectangle = new Two.Rectangle(0, 0, rect.width, rect.height);
-			// rectangle.fill = 'rgb(255, 50, 50)';
-			rectangle.fill = "transparent";
-			rectangle.noStroke();
-			// rectangle.opacity = 0.75;
-			rectangle.visible = false;
-
-			var entity = Matter.Bodies.rectangle(ox, oy, 1, 1);
-			Matter.Body.scale(entity, rect.width, rect.height);
-
-			entity.scale = new Two.Vector(rect.width, rect.height);
-			entity.object = group;
-			entities.push(entity);
-
-			x += rect.width + defaultStyles.margin.left + defaultStyles.margin.right;
-
-			group.text = text;
-			group.rectangle = rectangle;
-			group.entity = entity;
-
-			group.add(rectangle, text);
-			two.add(group);
-		}
-
-		Matter.World.add(solver.world, entities);
-	}
-
-	function update(frameCount, timeDelta) {
-		var allBodies = Matter.Composite.allBodies(solver.world);
-
-		Matter.Engine.update(solver);
-
-		for (var i = 0; i < entities.length; i++) {
-			var entity = entities[i];
-			entity.object.position.copy(entity.position);
-			entity.object.rotation = entity.angle;
-		}
-	}
-
-	function createBoundary(width, height) {
-		var rectangle = two.makeRectangle(0, 0, width, height);
-		rectangle.visible = false;
-
-		rectangle.entity = Matter.Bodies.rectangle(
-			0,
-			0,
-			width,
-			height,
-			bounds.properties
-		);
-		rectangle.entity.position = rectangle.position;
-
-		return rectangle;
-	}
+  // Apply parallax effect and click event to each box
+  addParallaxEffect('boxA');
+  addParallaxEffect('boxB');
+  addParallaxEffect('boxC');
+  addParallaxEffect('boxD');
+  addParallaxEffect('boxE');
 </script>
+</body>
+</html>
