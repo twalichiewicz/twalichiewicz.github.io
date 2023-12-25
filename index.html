@@ -90,8 +90,14 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <style>
-        canvas {
+		canvas {
+			color: black;
 			top: 48px;
+		}
+		@media (prefers-color-scheme: dark) {
+			canvas {
+				color: white;
+			}
 		}
 
 		#interactive__homepage {
@@ -148,7 +154,7 @@
 <div id="interactive__homepage"><canvas width="750" height="1624" data-pixel-ratio="2" style="display: block; top: 0px; left: 0px; right: 0px; bottom: 0px; position: fixed; width: 375px; height: 812px;"></canvas></div>
 
 <div id="interactive__text">
-  Messaging AI Prototyping Branding Research Testing HCI Content Strategy UX Analytics MVP Product Coding Roadmapping Data
+  Messaging <b>AI</b> Prototyping Branding <b>Research</b> Testing <b>HCI</b> Content  <b>UX</b> Analytics <b>Strategy</b> MVP <b>Product</b> Coding Roadmapping <b>Data</b>
 </div>
 
 <script>
@@ -351,40 +357,54 @@
 				}
 				, O = p.Two = function(e) {
 					var t = B.defaults(e || {}, {
-						fullscreen: !1
-						, width: 640
-						, height: 480
-						, type: O.Types.svg
-						, autostart: !1
-					});
-					if (B.each(t, function(e, t) {
+							fullscreen: !1,
+							width: 640,
+							height: 480,
+							type: O.Types.svg,
+							autostart: !1,
+							darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches // Added darkMode option
+						});
+
+						if (B.each(t, function (e, t) {
 							/fullscreen/i.test(t) || /autostart/i.test(t) || (this[t] = e)
 						}, this), B.isElement(t.domElement)) {
-						var i = t.domElement.tagName.toLowerCase();
-						/^(CanvasRenderer-canvas|WebGLRenderer-canvas|SVGRenderer-svg)$/.test(this.type + "-" + i) || (this.type = O.Types[i])
-					}
-					if (this.renderer = new O[this.type](this), O.Utils.setPlaying.call(this, t.autostart), this.frameCount = 0, t.fullscreen) {
-						var r = B.bind(S, this);
-						B.extend(document.body.style, {
-							overflow: "hidden"
-							, margin: 0
-							, padding: 0
-							, top: 0
-							, left: 0
-							, right: 0
-							, bottom: 0
-							, position: "fixed"
-						}), B.extend(this.renderer.domElement.style, {
-							display: "block"
-							, top: 0
-							, left: 0
-							, right: 0
-							, bottom: 0
-							, position: "fixed"
-						}), a.bind(p, "resize", r), r()
-					} else B.isElement(t.domElement) || (this.renderer.setSize(t.width, t.height, this.ratio), this.width = t.width, this.height = t.height);
-					this.renderer.bind(O.Events.resize, B.bind(C, this)), this.scene = this.renderer.scene, O.Instances.push(this), t.autostart && A.init()
-				};
+							var i = t.domElement.tagName.toLowerCase();
+							/^(CanvasRenderer-canvas|WebGLRenderer-canvas|SVGRenderer-svg)$/.test(this.type + "-" + i) || (this.type = O.Types[i])
+						}
+
+						if (this.renderer = new O[this.type](this), O.Utils.setPlaying.call(this, t.autostart), this.frameCount = 0, t.fullscreen) {
+							var r = B.bind(S, this);
+							B.extend(document.body.style, {
+								overflow: "hidden",
+								margin: 0,
+								padding: 0,
+								top: 0,
+								left: 0,
+								right: 0,
+								bottom: 0,
+								position: "fixed"
+							});
+
+							B.extend(this.renderer.domElement.style, {
+								display: "block",
+								top: 0,
+								left: 0,
+								right: 0,
+								bottom: 0,
+								position: "fixed",
+								color: t.darkMode ? "#fff" : "#000", // Text color based on dark mode
+								backgroundColor: t.darkMode ? "transparent" : "transparent" // Background color based on dark mode
+							});
+
+							a.bind(p, "resize", r);
+							r();
+						} else B.isElement(t.domElement) || (this.renderer.setSize(t.width, t.height, this.ratio), this.width = t.width, this.height = t.height);
+
+						this.renderer.bind(O.Events.resize, B.bind(C, this));
+						this.scene = this.renderer.scene;
+						O.Instances.push(this);
+						t.autostart && A.init();
+					};
 			B.extend(O, {
 				root: p
 				, nextFrameID: null
@@ -621,7 +641,7 @@
 							});
 							var n = new O.Path(r, !0)
 								.noStroke();
-							return n.fill = "black", O.Utils.applySvgAttributes.call(this, e, n, t), n
+							return n.fill = "currentcolor", O.Utils.applySvgAttributes.call(this, e, n, t), n
 						}
 						, polyline: function(e, t) {
 							var i = O.Utils.read.polygon.call(this, e, t);
@@ -743,7 +763,7 @@
 								}), !(T.length <= 1)) {
 								(i = new O.Path(T, P, void 0, !0)
 									.noStroke())
-								.fill = "black";
+								.fill = "currentcolor";
 								var r = i.getBoundingClientRect(!0);
 								return r.centroid = {
 									x: r.left + r.width / 2
@@ -759,7 +779,7 @@
 								, n = parseFloat(e.getAttribute("r"))
 								, s = new O.Circle(i, r, n)
 								.noStroke();
-							return s.fill = "black", O.Utils.applySvgAttributes.call(this, e, s, t), s
+							return s.fill = "currentcolor", O.Utils.applySvgAttributes.call(this, e, s, t), s
 						}
 						, ellipse: function(e, t) {
 							var i = parseFloat(e.getAttribute("cx"))
@@ -768,7 +788,7 @@
 								, s = parseFloat(e.getAttribute("ry"))
 								, o = new O.Ellipse(i, r, n, s)
 								.noStroke();
-							return o.fill = "black", O.Utils.applySvgAttributes.call(this, e, o, t), o
+							return o.fill = "currentcolor", O.Utils.applySvgAttributes.call(this, e, o, t), o
 						}
 						, rect: function(e, t) {
 							var i = parseFloat(e.getAttribute("rx"))
@@ -782,7 +802,7 @@
 								, c = a / 2
 								, h = new O.Rectangle(n + l, s + c, o, a)
 								.noStroke();
-							return h.fill = "black", O.Utils.applySvgAttributes.call(this, e, h, t), h
+							return h.fill = "currentcolor", O.Utils.applySvgAttributes.call(this, e, h, t), h
 						}
 						, "rounded-rect": function(e, t) {
 							var i = parseFloat(e.getAttribute("x")) || 0
@@ -796,7 +816,7 @@
 								, h = new O.Vector(n, s)
 								, d = new O.RoundedRectangle(i + l, r + c, o, a, h)
 								.noStroke();
-							return d.fill = "black", O.Utils.applySvgAttributes.call(this, e, d, t), d
+							return d.fill = "currentcolor", O.Utils.applySvgAttributes.call(this, e, d, t), d
 						}
 						, line: function(e, t) {
 							var i = parseFloat(e.getAttribute("x1"))
@@ -820,26 +840,6 @@
 							}
 							var m = new O.LinearGradient(i - o, r - a, n - o, s - a, l);
 							return O.Utils.applySvgAttributes.call(this, e, m, t), m
-						}
-						, radialgradient: function(e, t) {
-							var i = parseFloat(e.getAttribute("cx")) || 0
-								, r = parseFloat(e.getAttribute("cy")) || 0
-								, n = parseFloat(e.getAttribute("r"))
-								, s = parseFloat(e.getAttribute("fx"))
-								, o = parseFloat(e.getAttribute("fy"));
-							B.isNaN(s) && (s = i), B.isNaN(o) && (o = r);
-							for (var a = w(i + s) / 2, l = w(r + o) / 2, c = [], h = 0; h < e.children.length; h++) {
-								var d, u = e.children[h]
-									, f = parseFloat(u.getAttribute("offset"))
-									, g = u.getAttribute("stop-color")
-									, p = u.getAttribute("stop-opacity")
-									, m = u.getAttribute("style");
-								if (B.isNull(g)) g = (d = !!m && m.match(/stop\-color\:\s?([\#a-fA-F0-9]*)/)) && 1 < d.length ? d[1] : void 0;
-								if (B.isNull(p)) p = (d = !!m && m.match(/stop\-opacity\:\s?([0-9\.\-]*)/)) && 1 < d.length ? parseFloat(d[1]) : 1;
-								c.push(new O.Gradient.Stop(f, g, p))
-							}
-							var v = new O.RadialGradient(i - a, r - l, n, c, s - a, o - l);
-							return O.Utils.applySvgAttributes.call(this, e, v, t), v
 						}
 					}
 					, subdivide: function(e, t, i, r, n, s, o, a, l) {
@@ -919,9 +919,6 @@
 							, o = O.Vector.distanceBetween(i, t)
 							, a = (r + n) / 2;
 						return s < 1e-4 || o < 1e-4 ? B.isBoolean(t.relative) && !t.relative && (t.controls.left.copy(t), t.controls.right.copy(t)) : (s *= .33, o *= .33, n < r ? a += d : a -= d, t.controls.left.x = c(a) * s, t.controls.left.y = l(a) * s, a -= h, t.controls.right.x = c(a) * o, t.controls.right.y = l(a) * o, B.isBoolean(t.relative) && !t.relative && (t.controls.left.x += t.x, t.controls.left.y += t.y, t.controls.right.x += t.x, t.controls.right.y += t.y)), t
-					}
-					, getReflection: function(e, t, i) {
-						return new O.Vector(2 * e.x - (t.x + e.x) - (i ? e.x : 0), 2 * e.y - (t.y + e.y) - (i ? e.y : 0))
 					}
 					, getAnchorsFromArcData: function(e, t, o, a, l, c, h) {
 						(new O.Matrix)
@@ -1179,16 +1176,6 @@
 				}
 				, makeText: function(e, t, i, r) {
 					var n = new O.Text(e, t, i, r);
-					return this.add(n), n
-				}
-				, makeLinearGradient: function(e, t, i, r) {
-					var n = o.call(arguments, 4)
-						, s = new O.LinearGradient(e, t, i, r, n);
-					return this.add(s), s
-				}
-				, makeRadialGradient: function(e, t, i) {
-					var r = o.call(arguments, 3)
-						, n = new O.RadialGradient(e, t, i, r);
 					return this.add(n), n
 				}
 				, makeSprite: function(e, t, i, r, n, s, o) {
@@ -1985,30 +1972,6 @@
 							return t || p && !_ ? (m || (e.save(), e.transform(h[0], h[3], h[1], h[4], h[2], h[5])), v || (e.font = [this._style, this._weight, this._size + "px/" + this._leading + "px", this._family].join(" ")), e.textAlign = Z.alignments[this._alignment] || this._alignment, e.textBaseline = this._baseline, f && (X.isString(f) ? e.fillStyle = f : (Z[f._renderer.type].render.call(f, e), e.fillStyle = f._renderer.effect)), d && (X.isString(d) ? e.strokeStyle = d : (Z[d._renderer.type].render.call(d, e), e.strokeStyle = d._renderer.effect)), u && (e.lineWidth = u), X.isNumber(g) && (e.globalAlpha = g), y && 0 < y.length && e.setLineDash(y), _ || i || (Z.isHidden.test(f) || (f._renderer && f._renderer.offset ? (l = H(f._renderer.scale.x), c = H(f._renderer.scale.y), e.save(), e.translate(-H(f._renderer.offset.x), -H(f._renderer.offset.y)), e.scale(l, c), r = this._size / f._renderer.scale.y, n = this._leading / f._renderer.scale.y, e.font = [this._style, this._weight, H(r) + "px/", H(n) + "px", this._family].join(" "), s = f._renderer.offset.x / f._renderer.scale.x, o = f._renderer.offset.y / f._renderer.scale.y, e.fillText(this.value, H(s), H(o)), e.restore()) : e.fillText(this.value, 0, 0)), Z.isHidden.test(d) || (d._renderer && d._renderer.offset ? (l = H(d._renderer.scale.x), c = H(d._renderer.scale.y), e.save(), e.translate(-H(d._renderer.offset.x), -H(d._renderer.offset.y)), e.scale(l, c), r = this._size / d._renderer.scale.y, n = this._leading / d._renderer.scale.y, e.font = [this._style, this._weight, H(r) + "px/", H(n) + "px", this._family].join(" "), s = d._renderer.offset.x / d._renderer.scale.x, o = d._renderer.offset.y / d._renderer.scale.y, a = u / d._renderer.scale.x, e.lineWidth = H(a), e.strokeText(this.value, H(s), H(o)), e.restore()) : e.strokeText(this.value, 0, 0))), m || e.restore(), _ && !i && e.clip(), y && 0 < y.length && e.setLineDash(Y), this.flagReset()) : this
 						}
 					}
-					, "linear-gradient": {
-						render: function(e) {
-							if (this._update(), !this._renderer.effect || this._flagEndPoints || this._flagStops) {
-								this._renderer.effect = e.createLinearGradient(this.left._x, this.left._y, this.right._x, this.right._y);
-								for (var t = 0; t < this.stops.length; t++) {
-									var i = this.stops[t];
-									this._renderer.effect.addColorStop(i._offset, i._color)
-								}
-							}
-							return this.flagReset()
-						}
-					}
-					, "radial-gradient": {
-						render: function(e) {
-							if (this._update(), !this._renderer.effect || this._flagCenter || this._flagFocal || this._flagRadius || this._flagStops) {
-								this._renderer.effect = e.createRadialGradient(this.center._x, this.center._y, 0, this.focal._x, this.focal._y, this._radius);
-								for (var t = 0; t < this.stops.length; t++) {
-									var i = this.stops[t];
-									this._renderer.effect.addColorStop(i._offset, i._color)
-								}
-							}
-							return this.flagReset()
-						}
-					}
 					, texture: {
 						render: function(e) {
 							this._update();
@@ -2427,7 +2390,7 @@
 				i[t] = new RegExp(e)
 			});
 			var n = I.Path = function(e, t, i, r) {
-				I.Shape.call(this), this._renderer.type = "path", this._renderer.flagVertices = U.bind(n.FlagVertices, this), this._renderer.bindVertices = U.bind(n.BindVertices, this), this._renderer.unbindVertices = U.bind(n.UnbindVertices, this), this._renderer.flagFill = U.bind(n.FlagFill, this), this._renderer.flagStroke = U.bind(n.FlagStroke, this), this._renderer.vertices = [], this._renderer.collection = [], this._closed = !!t, this._curved = !!i, this.beginning = 0, this.ending = 1, this.fill = "currentColor", this.stroke = "currentColor", this.linewidth = 1, this.opacity = 1, this.className = "", this.visible = !0, this.cap = "butt", this.join = "miter", this.miter = 4, this.vertices = e, this.automatic = !r, this.dashes = []
+				I.Shape.call(this), this._renderer.type = "path", this._renderer.flagVertices = U.bind(n.FlagVertices, this), this._renderer.bindVertices = U.bind(n.BindVertices, this), this._renderer.unbindVertices = U.bind(n.UnbindVertices, this), this._renderer.flagFill = U.bind(n.FlagFill, this), this._renderer.flagStroke = U.bind(n.FlagStroke, this), this._renderer.vertices = [], this._renderer.collection = [], this._closed = !!t, this._curved = !!i, this.beginning = 0, this.ending = 1, this.fill = "currentcolor", this.stroke = "currentcolor", this.linewidth = 1, this.opacity = 1, this.className = "", this.visible = !0, this.cap = "butt", this.join = "miter", this.miter = 4, this.vertices = e, this.automatic = !r, this.dashes = []
 			};
 
 			function x(e, t) {
@@ -2596,8 +2559,8 @@
 				, _flagMiter: !0
 				, _flagClip: !1
 				, _length: 0
-				, _fill: "currentColor"
-				, _stroke: "currentColor"
+				, _fill: "currentcolor"
+				, _stroke: "currentcolor"
 				, _linewidth: 1
 				, _opacity: 1
 				, _className: ""
@@ -3281,7 +3244,7 @@
 				, _style: "normal"
 				, _weight: 800
 				, _decoration: "none"
-				, _fill: "currentColor"
+				, _fill: "currentcolor"
 				, _stroke: "transparent"
 				, _linewidth: 1
 				, _opacity: 1
@@ -3359,7 +3322,7 @@
 		, function(r) {
 			var n = r.Utils
 				, s = r.Stop = function(e, t, i) {
-					this._renderer = {}, this._renderer.type = "stop", this.offset = n.isNumber(e) ? e : s.Index <= 0 ? 0 : 1, this.opacity = n.isNumber(i) ? i : 1, this.color = n.isString(t) ? t : s.Index <= 0 ? "currentColor" : "currentColor", s.Index = (s.Index + 1) % 2
+					this._renderer = {}, this._renderer.type = "stop", this.offset = n.isNumber(e) ? e : s.Index <= 0 ? 0 : 1, this.opacity = n.isNumber(i) ? i : 1, this.color = n.isString(t) ? t : s.Index <= 0 ? "currentcolor" : "currentcolor", s.Index = (s.Index + 1) % 2
 				};
 			n.extend(s, {
 				Index: 0
@@ -3970,8 +3933,8 @@
 				, _flagEnding: !1
 				, _flagLength: !1
 				, _flagMask: !1
-				, _fill: "currentColor"
-				, _stroke: "currentColor"
+				, _fill: "currentcolor"
+				, _stroke: "currentcolor"
 				, _linewidth: 1
 				, _opacity: 1
 				, _className: ""
@@ -4243,7 +4206,7 @@
 								, inertia: t.inertia || e.inertia
 							});
 							var i = e.isStatic ? "#2e2b44" : s.choose(["#006BA6", "#0496FF", "#FFBC42", "#D81159", "#8F2D56"]);
-							e.render.fillStyle = e.render.fillStyle || i, e.render.strokeStyle = e.render.strokeStyle || "currentColor", e.render.sprite.xOffset += -(e.bounds.min.x - e.position.x) / (e.bounds.max.x - e.bounds.min.x), e.render.sprite.yOffset += -(e.bounds.min.y - e.position.y) / (e.bounds.max.y - e.bounds.min.y)
+							e.render.fillStyle = e.render.fillStyle || i, e.render.strokeStyle = e.render.strokeStyle || "currentcolor", e.render.sprite.xOffset += -(e.bounds.min.x - e.position.x) / (e.bounds.max.x - e.bounds.min.x), e.render.sprite.yOffset += -(e.bounds.min.y - e.position.y) / (e.bounds.max.y - e.bounds.min.y)
 						};
 						c.set = function(e, t, i) {
 							var r;
@@ -7151,7 +7114,7 @@
 	var defaultStyles = {
 		size: getFontSize()
 		, weight: 400
-		, color: "black"
+		, color: "currentcolor"
 		, leading: getFontSize()
 		, family: "FoundersGrotesk, Helvetica Neue, sans-serif"
 		, margin: {
@@ -7189,7 +7152,7 @@
 						break;
 					case "b":
 					case "strong":
-						o.weight = 500
+						o.weight = 600
 				}
 				for (s.push({
 						styles: o
