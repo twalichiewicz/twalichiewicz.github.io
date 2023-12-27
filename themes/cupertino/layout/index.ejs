@@ -13,30 +13,32 @@
 		}
 
 		#interactive__homepage {
-			/* Remove pointer-events: none; from #interactive__homepage */
 			background-color: transparent;
 			-webkit-user-select: none;
 			-moz-user-select: none;
 			-ms-user-select: none;
 			user-select: none;
+			pointer-events: auto;
 			position: fixed;
 			top: 48px;
 			left: 0;
 			right: 0;
 			bottom: 0;
+			width: 100vw;
+			height: auto;
 			z-index: -999;
 			touch-action: manipulation;
 		}
 
-		#interactive__homepage canvas {
+		/* #interactive__homepage canvas {
 			pointer-events: auto;
 			position: fixed;
 			top: 48px;
 			left: 0;
-			width: 100%; /* Set the width to 100% or adjust as needed */
-			height: auto; /* Set the height to auto or adjust as needed */
+			width: 100%;
+			height: auto;
 			touch-action: manipulation;
-		}
+		} */
 
 		#interactive__text {
 			display: none;
@@ -52,36 +54,33 @@
 	</style>
 </head>
 <body data-gr-c-s-loaded="true" cz-shortcut-listen="true">
-	<header>
-		<nav>
-			<div class="nav-content-container">
-				<div class="breadcrumbs">
-					<a target="_self" href="https://www.thomas.design">
-						<h2 class="section-title active">thomas.design</h2>
-					</a>
-					<span class="nav-spacer">/</span>
-					<a target="_self" href="https://www.thomas.design/blog">
-						<h2 class="section-title">Blog</h2>
-					</a>
-					<a
-						target="_self"
-						href="https://www.thomas.design/portfolio"
-					>
-						<h2 class="section-title">Portfolio</h2>
-					</a>
-					<a
-						target="_blank"
-						href="https://www.linkedin.com/in/twalichiewicz/"
-					>
-						<h2 class="section-title">Contact</h2>
-					</a>
-				</div>
+	<nav>
+		<div class="nav-content-container">
+			<div class="breadcrumbs">
+				<a target="_self" href="https://www.thomas.design">
+					<h2 class="section-title active">thomas.design</h2>
+				</a>
+				<span class="nav-spacer">/</span>
+				<a target="_self" href="https://www.thomas.design/blog">
+					<h2 class="section-title">Blog</h2>
+				</a>
+				<a
+					target="_self"
+					href="https://www.thomas.design/portfolio"
+				>
+					<h2 class="section-title">Portfolio</h2>
+				</a>
+				<a
+					target="_blank"
+					href="https://www.linkedin.com/in/twalichiewicz/"
+				>
+					<h2 class="section-title">Contact</h2>
+				</a>
 			</div>
-		</nav>
-	</header>
+		</div>
+	</nav>
 	<div id="touch-container" style="height: 100vh; width: 100vw;">
 		<div id="interactive__homepage">
-			<canvas width="750" height="1624" data-pixel-ratio="2" style="display: block; top: 0px; left: 0px; right: 0px; bottom: 0px; position: fixed; width: 375px; height: 812px;"></canvas>
 		</div>
 	</div>
 	<div id="interactive__text">
@@ -89,9 +88,21 @@
 		<b>HCI</b> Content <b>UX</b> Analytics <b>Strategy</b> MVP
 		<b>Product</b> Coding Roadmapping <b>Data</b>
 	</div>
+	<div id="interactive__images">
+		<img src=""/>
+	</div>
+
+	<footer>
+		<div class="inner">
+			<span
+				>Designed, written, and coded by <%= config.author || config.title %> in
+				California<br />&copy; <%= date(new Date(), 'YYYY') %></span
+			>
+		</div>
+	</footer>
 
 	<script>
-		((this || self || window).Two = (function (e) {
+		((this || selfs || window).Two = (function (e) {
 			var p;
 			p =
 				"undefined" != typeof window
@@ -17586,18 +17597,19 @@
 			]);
 		var defaultStyles = {
 			size: getFontSize(),
-			weight: 400,
+			weight: 300,
 			color: "currentcolor",
 			leading: getFontSize(),
-			family: "FoundersGrotesk, Helvetica Neue, sans-serif",
+			family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
 			margin: {
-				top: 5,
-				left: 10,
-				right: 15,
-				bottom: 5,
+				top: 3,
+				left: 6,
+				right: 6,
+				bottom: 3,
 			},
 		};
 
+		// Set up the render environment
 		function setup() {
 			setupCopy(),
 				setupSymbols(),
@@ -17633,6 +17645,7 @@
 				Matter.Events.on(solver, "afterUpdate", update);
 		}
 
+		// Load text from interactive__text
 		function setupCopy() {
 			for (
 				var e = document.querySelector("#interactive__text").childNodes,
@@ -17709,6 +17722,7 @@
 			};
 		}
 
+		// Handle window resizing
 		function resize() {
 			var e = bounds.thickness,
 				t = 1.25 * two.width,
@@ -17805,6 +17819,7 @@
 			two.render();
 		}
 
+		// Takes the text from the page and turns it into canvas elements
 		function addSlogan() {
 			for (
 				var e,
@@ -17897,7 +17912,7 @@
 			Matter.World.add(solver.world, entities);
 		}
 
-		//START INTERACTION
+		// Makes the simulation interactive
 		function addMouseInteraction() {
 			var container = document.getElementById("touch-container"); // You may replace this with the appropriate container element
 			var s = 0;
@@ -17933,6 +17948,7 @@
 			}
 
 			container.addEventListener("click", function (e) {
+				console.log("Clicked at", e.clientX, e.clientY);
 				handleInputStart(e.clientX, e.clientY);
 				handleClick(e);
 			});
@@ -17962,8 +17978,7 @@
 			return mouseConstraint;
 		}
 
-		//END INTERACTION
-
+		// Easter egg to make blocks of text explode into letter fragments on double-click
 		function explode(e) {
 			if (!e.object.isSymbol) {
 				var t = e.object,

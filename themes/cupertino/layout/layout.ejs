@@ -3,26 +3,8 @@
     <%- partial('_partial/head') %>
     <body
         data-color-scheme="<%= theme.color_scheme %>"
-        data-uppercase-categories="<%= theme.uppercase_categories %>"
         data-config-root="<%- config.root %>"
-        <% if (theme.toc == true) { %>
-        data-toc="<%= theme.toc %>"
-        data-toc-max-depth="<%= theme.toc_max_depth %>"
-        <% } %>
-        <% if (theme.search == true && page.type == 'search') { %>
-        data-search-path="<%= theme.search_path %>"
-        <% } %>
     >
         <%- body %>
-        <%- partial('_partial/footer') %>
-
-        <%- js('js/main.js') %>
-
-        <% if (config.tidio) { %>
-        <%- js(config.tidio) %>
-        <% } %>
-        <% if (config.ackee) { %>
-        <%- config.ackee %>
-        <% } %>
     </body>
 </html>

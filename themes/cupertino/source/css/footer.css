@@ -4,6 +4,7 @@ footer {
 	width: 100%;
 	text-align: center;
 	user-select: none;
+	z-index: -99999;
 	-webkit-user-select: none;
 }
 
