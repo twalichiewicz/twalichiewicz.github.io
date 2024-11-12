@@ -91,15 +91,14 @@
 	<div id="interactive__images">
 		<img src=""/>
 	</div>
-
 	<footer>
 		<div class="inner">
-			<span
-				>Designed, written, and coded by <%= config.author || config.title %> in
-				California<br />&copy; <%= date(new Date(), 'YYYY') %></span
-			>
+			<span>Designed, written, and coded by <%= config.author || config.title %> in California<br /><span style="display:inline-block;" id="current-year"></span></span>
 		</div>
 	</footer>
+	<script>
+		document.getElementById('current-year').textContent = new Date().getFullYear();
+	</script>
 
 	<script>
 		((this || selfs || window).Two = (function (e) {
