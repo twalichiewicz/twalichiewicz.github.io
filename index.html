@@ -173,15 +173,14 @@
 	<div id="interactive__images">
 		<img src=""/>
 	</div>
-
 	<footer>
 		<div class="inner">
-			<span
-				>Designed, written, and coded by Thomas Walichiewicz in
-				California<br />&copy; 2023</span
-			>
+			<span>Designed, written, and coded by Thomas Walichiewicz in California<br /><span style="display:inline-block;" id="current-year"></span></span>
 		</div>
 	</footer>
+	<script>
+		document.getElementById('current-year').textContent = new Date().getFullYear();
+	</script>
 
 	<script>
 		((this || selfs || window).Two = (function (e) {
